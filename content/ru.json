@@ -1,0 +1,37 @@
+{
+    "RegistrationPage": {
+        "ValidationError": {
+            "Name": {
+                "CanNotBeEmpty": "Введите имя"
+            },
+            "Email": {
+                "CanNotBeEmpty": "Введите email",
+                "MustBeEmail": "Введите корректный email",
+                "AlreadyExists": "Пользователь с таким Email уже существует"
+            },
+            "Phone": {
+                "CanNotBeEmpty": "Введите номер телефона",
+                "MustBePhone": "Введите номер телефона в формате +71234567890"
+            },
+            "Password": {
+                "CanNotBeEmpty": "Введите пароль"
+            },
+            "RepeatPassword": {
+                "MustBeSame": "Не совпадает с паролем"
+            }
+        }
+    },
+    "LoginPage": {
+        "ValidationError": {
+            "Email": {
+                "CanNotBeEmpty": "Введите email",
+                "MustBeEmail": "Введите корректный email",
+                "NotFound": "Пользователя с таким Email не существует"
+            },
+            "Password": {
+                "CanNotBeEmpty": "Введите пароль",
+                "Incorrect": "Пароль неверный"
+            }
+        }
+    }
+}
