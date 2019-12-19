@@ -141,10 +141,6 @@ app.get('/admin/sessions', (request, response) => {
         "GET",
         "/api/english/admin/sessions",
         {
-            "Params": {
-                "Email": request.body.Email,
-                "Password": request.body.Password
-            },
             "Headers": {
                 "Authorization": request.cookies["SessionToken"]
             }
