@@ -32,20 +32,17 @@ function requestToMainServer(method, path, data = {}) {
     return JSON.parse(res.getBody());
 }
 
-const VALIDATION_ERRORS = {
+const I18 = {
     "RU": JSON.parse(fs.readFileSync('content/ru.json', 'utf8'))
 }
 
 function getValidationError(language, page, field, error) {
-    return VALIDATION_ERRORS[language][page]["ValidationError"][field][error];
+    return I18[language][page]["ValidationError"][field][error];
 }
 
 // Главная страница
 app.get('/', (request, response) => {
-    var res = requestToMainServer("GET", "/hi");
-    // console.log(res);
-    // response.send(JSON.stringify(res));
-    response.render('home', { params: JSON.stringify(res) });
+    response.render('home');
 });
 
 app.get('/registration', (request, response) => {
@@ -54,7 +51,6 @@ app.get('/registration', (request, response) => {
 });
 
 app.post('/registration', (request, response) => {
-    // console.log(request.cookies);
     var serverResponse = requestToMainServer(
         "POST",
         "/api/english/users",
@@ -88,18 +84,14 @@ app.post('/registration', (request, response) => {
             }
         }
     }
-    console.log(params["Status"]);
-
     response.render('registration', params);
 });
 
 app.get('/login', (request, response) => {
-    // console.log(request.cookies);
     response.render('login');
 });
 
 app.post('/login', (request, response) => {
-    // console.log(request.cookies);
     var serverResponse = requestToMainServer(
         "POST",
         "/api/english/login",
