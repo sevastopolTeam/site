@@ -33,5 +33,22 @@
                 "Incorrect": "Пароль неверный"
             }
         }
+    },
+    "AddTranslationPage": {
+        "ValidationError": {
+            "ValueFrom": {
+                "AlreadyExists": "Уже существует",
+                "CanNotBeEmpty": "Не может быть пустым"
+            },
+            "ValueTo": {
+                "CanNotBeEmpty": "Не может быть пустым"
+            },
+            "LanguageFrom": {
+                "CanNotBeEmpty": "Не может быть пустым"
+            },
+            "LanguageTo": {
+                "CanNotBeEmpty": "Не может быть пустым"
+            }
+        }
     }
 }
