@@ -1,0 +1,8 @@
+const env = {
+  AWS_ACCESS_KEY: 'SOME AWS ACCESS KEY',
+  AWS_SECRET_ACCESS_KEY: 'SOME AWS SECRET ACCESS KEY',
+  REGION : 'SOME AWS REGION',
+  Bucket: 'SOME AWS BUCKET'
+};
+ 
+module.exports = env;

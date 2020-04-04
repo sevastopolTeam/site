@@ -26,7 +26,7 @@ app.use(cookieParser())
 function requestToMainServer(method, path, data = {}) {
     console.log(data);
     var res = request(
-        method, 
+        method,
         "http://localhost:1234" + path,
         { headers: data["Headers"], json: data["Params"] }
     );
@@ -68,12 +68,11 @@ function uploadToAWS(filename, filebody) {
     return res["Location"];
 }
 
+// returns url in AWS
 function uploadToAWSByUrl(url, name) {
     var res = request("GET", url);
     return uploadToAWS("test4.jpg", res.getBody());
 }
-
-// console.log("new: " + uploadToAWSByUrl("https://www.1zoom.me/big2/30/104540-spider280578.jpg", "testname1"));
 
 // Главная страница
 app.get('/', (request, response) => {
@@ -91,11 +90,11 @@ app.post('/registration', (request, response) => {
         "/api/english/users",
         {
             "Params": {
-                Phone: request.body.Phone,
-                Name: request.body.Name,
-                Email: request.body.Email,
-                Password: request.body.Password,
-                RepeatPassword: request.body.RepeatPassword
+                "Phone": request.body.Phone,
+                "Name": request.body.Name,
+                "Email": request.body.Email,
+                "Password": request.body.Password,
+                "RepeatPassword": request.body.RepeatPassword
             }
         }
     );
@@ -201,6 +200,58 @@ app.get('/admin/add_translation', (request, response) => {
     response.render('admin_add_translation');
 });
 
+app.get('/admin/delete_translation/:id', (request, response) => {
+    var serverResponse = requestToMainServer(
+        "DELETE",
+        "/api/english/admin/translations/" + request.params.id,
+        {
+            "Headers": {
+                "Authorization": request.cookies["SessionToken"]
+            }
+        }
+    );
+    console.log(serverResponse);
+    if (serverResponse["Error"] == "AccessDenied") {
+        response.render('access_denied');
+    } else {
+        response.redirect('/admin/translations');
+    }
+});
+
+app.get('/admin/translations/:id', (request, response) => {
+    var serverResponse = requestToMainServer(
+        "GET",
+        "/api/english/admin/translations/" + request.params.id,
+        {
+            "Headers": {
+                "Authorization": request.cookies["SessionToken"]
+            }
+        }
+    );
+    if (serverResponse["Error"] == "AccessDenied") {
+        response.render('access_denied');
+    } else {
+        response.render('admin_view_translation', serverResponse["Body"]);
+    }
+});
+
+app.get('/admin/translations/:id/edit', (request, response) => {
+    var serverResponse = requestToMainServer(
+        "GET",
+        "/api/english/admin/translations/" + request.params.id,
+        {
+            "Headers": {
+                "Authorization": request.cookies["SessionToken"]
+            }
+        }
+    );
+    if (serverResponse["Error"] == "AccessDenied") {
+        response.render('access_denied');
+    } else {
+        response.render('admin_edit_translation', serverResponse["Body"]);
+    }
+});
+
 app.post('/admin/add_translation', (request, response) => {
     var serverResponse = requestToMainServer(
         "POST",
@@ -211,7 +262,8 @@ app.post('/admin/add_translation', (request, response) => {
                 "ValueTo": request.body.ValueTo,
                 "LanguageFrom": request.body.LanguageFrom,
                 "LanguageTo": request.body.LanguageTo,
-                "OriginUrl": request.body.OriginUrl
+                "OriginUrl": request.body.OriginUrl,
+                "DownloadUrl": request.body.DownloadUrl
             },
             "Headers": {
                 "Authorization": request.cookies["SessionToken"]
@@ -240,6 +292,33 @@ app.post('/admin/add_translation', (request, response) => {
     }
     response.render('admin_add_translation', params);
 });
+
+// function uploadWord(word) {
+//     var serverResponse = requestToMainServer(
+//         "POST",
+//         "/api/english/admin/translations",
+//         {
+//             "Params": {
+//                 "ValueFrom": word["ValueFrom"],
+//                 "ValueTo": word["ValueTo"],
+//                 "LanguageFrom": "русский",
+//                 "LanguageTo": "english",
+//                 "OriginUrl": "",
+//                 "DownloadUrl": ""
+//             },
+//             "Headers": {
+//                 "Authorization": "00dbbc3d6fdd485fcdc1c1458aedb4c61585928683"
+//             }
+//         }
+//     );
+//     console.log(serverResponse);
+// }
+
+
+// words.forEach(function(item, i, arr) {
+//     // console.log(item)
+//     uploadWord(item)
+// });
 
 
 console.log("Server started")
