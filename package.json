@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/sevastopolTeam/site#readme",
   "dependencies": {
+    "aws-sdk": "^2.653.0",
     "cookie-parser": "^1.4.5",
+    "deasync": "^0.1.19",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "sync-request": "^6.1.0"

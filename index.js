@@ -7,6 +7,8 @@ const http=require("http")
 const bodyParser=require("body-parser");
 const request = require('sync-request');
 const fs = require('fs');
+const s3 = require('./s3_config.js');
+
 var cookieParser = require('cookie-parser')
 
 app.engine('.hbs', exphbs({
@@ -39,6 +41,39 @@ const I18 = {
 function getValidationError(language, page, field, error) {
     return I18[language][page]["ValidationError"][field][error];
 }
+
+
+function uploadToAWS(filename, filebody) {
+    const s3Client = s3.s3Client;
+    const params = s3.uploadParams;
+
+    params.Key = filename;
+    params.Body = filebody;
+
+    var res = undefined;
+    var isFinished = undefined;
+    s3Client.upload(params, (err, data) => {
+        if (err) {
+            res = err;
+        } {
+            res = data;
+        }
+        isFinished = true;
+    });
+
+    // ждем выполнения асинхронной операции
+    while(isFinished === undefined) {
+        require('deasync').runLoopOnce();
+    }
+    return res["Location"];
+}
+
+function uploadToAWSByUrl(url, name) {
+    var res = request("GET", url);
+    return uploadToAWS("test4.jpg", res.getBody());
+}
+
+// console.log("new: " + uploadToAWSByUrl("https://www.1zoom.me/big2/30/104540-spider280578.jpg", "testname1"));
 
 // Главная страница
 app.get('/', (request, response) => {
