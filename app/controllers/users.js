@@ -2,7 +2,7 @@ const remoteServer = require('../../config/remote_server');
 const I18 = require('../../config/i18');
 
 exports.signup = function(request, response) {
-    response.render('signup');
+    response.render('users/signup');
 };
 
 exports.create = function(request, response) {
@@ -39,11 +39,11 @@ exports.create = function(request, response) {
             }
         }
     }
-    response.render('signup', params);
+    response.render('users/signup', params);
 };
 
 exports.login = function(request, response) {
-    response.render('login');
+    response.render('users/login');
 };
 
 exports.signin = function(request, response) {
@@ -80,5 +80,20 @@ exports.signin = function(request, response) {
     if (serverResponse["Status"] == "Ok") {
         response.cookie("SessionToken", serverResponse["Body"]["SessionToken"]);
     }
-    response.render('login', params);
+    response.render('users/login', params);
 };
+
+exports.logout = function(request, response) {
+	var serverResponse = remoteServer.request(
+        "DELETE",
+        "/api/english/logout",
+        {
+            "Headers": {
+                "Authorization": request.cookies["SessionToken"]
+            }
+        }
+    );
+
+	// response.clearCookie("SessionToken");
+	response.redirect('/');
+}

@@ -34,6 +34,7 @@ app.get('/signup', users.signup);
 app.post('/signup', users.create);
 app.get('/login', users.login);
 app.post('/login', users.signin);
+app.get('/logout', users.logout);
 
 app.get('/admin/sessions', sessions.index);
 
