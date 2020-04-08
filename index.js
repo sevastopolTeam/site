@@ -42,7 +42,8 @@ app.get('/admin/translations', translations.index);
 app.get('/admin/translation-delete/:id', translations.delete);
 app.get('/admin/translations/:id', translations.view);
 app.get('/admin/translations/:id/edit', translations.edit);
-app.get('/admin/translations-add', translations.add);
+app.post('/admin/translations/:id/edit', translations.put);
+app.get('/admin/translation-add', translations.add);
 app.post('/admin/translation-add', translations.create);
 
 console.log("Server started")

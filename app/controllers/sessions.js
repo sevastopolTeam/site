@@ -1,8 +1,7 @@
 const remoteServer = require('../../config/remote_server');
 
 exports.index = function(request, response) {
-    var serverResponse = remoteServer.request(
-        "GET",
+    var serverResponse = remoteServer.get(
         "/api/english/admin/sessions",
         {
             "Headers": {

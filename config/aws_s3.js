@@ -1,20 +1,22 @@
 const AWS = require('aws-sdk');
+const request = require('sync-request');
 const env = require('../env.js');
  
-const s3Client = new AWS.S3({
+const awsS3Client = new AWS.S3({
     accessKeyId: env.AWS_ACCESS_KEY,
     secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
-  	region : env.AWS_REGION
+    region : env.AWS_REGION
 });
  
 const uploadParams = {
          Bucket: env.AWS_BUCKET, 
-         Key: '', // pass key
-         Body: null, // pass file body
+         Key: '',
+         Body: null,
+         ContentType: "image"
 };
  
-var uploadToAWS = function(filename, filebody) {
-    const s3Client = s3Client;
+var upload = function(filename, filebody) {
+    const s3Client = awsS3Client;
     const params = uploadParams;
 
     params.Key = filename;
@@ -39,10 +41,10 @@ var uploadToAWS = function(filename, filebody) {
 }
 
 // returns url in AWS
-var uploadToAWSByUrl = function(url, name) {
+var uploadByUrl = function(url, name) {
     var res = request("GET", url);
-    return uploadToAWS("test4.jpg", res.getBody());
+    return upload(name, res.getBody());
 }
 
-exports.uploadToAWS = uploadToAWS;
-exports.uploadToAWSByUrl = uploadToAWSByUrl;
+exports.upload = upload;
+exports.uploadByUrl = uploadByUrl;

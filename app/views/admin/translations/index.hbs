@@ -8,11 +8,11 @@
         <th> Ссылка для отображения </th>
         <th> Исходная ссылка </th>
     </tr>
-    {{#each Body}}
+    {{#each Translations}}
         <tr>
             <td>
                 <a href="/admin/translations/{{this.Id}}"> view </a> 
-                <a href="#"> edit </a>
+                <a href="/admin/translations/{{this.Id}}/edit"> edit </a>
                 <a href="/admin/translation-delete/{{this.Id}}"> delete </a>
             </td>
             <td> {{this.ValueFrom}} </td>
@@ -24,3 +24,7 @@
         </tr>
     {{/each}}
 </table>
+
+{{#each Pages}}
+    <a href="/admin/translations?page={{this}}"> {{this}} </a>
+{{/each}}

@@ -1,13 +1,13 @@
 const remoteServer = require('../../config/remote_server');
 const I18 = require('../../config/i18');
+const helperController = require('../../helpers/helper_controller');
 
 exports.signup = function(request, response) {
     response.render('users/signup');
 };
 
 exports.create = function(request, response) {
-    var serverResponse = remoteServer.request(
-        "POST",
+    var serverResponse = remoteServer.post(
         "/api/english/users",
         {
             "Params": {
@@ -28,16 +28,12 @@ exports.create = function(request, response) {
     };
 
     if (serverResponse["Status"] == "ValidationError") {
-        for (var key in serverResponse["ValidationErrors"]) {
-            if (serverResponse["ValidationErrors"][key].length > 0) {
-                params["ValidationErrors"][key] = I18.getValidationError(
-                    "RU",
-                    "RegistrationPage",
-                    key,
-                    serverResponse["ValidationErrors"][key][0]
-                )
-            }
-        }
+        helperController.updateValidationErrors(
+            params,
+            serverResponse["ValidationErrors"],
+            "RU",
+            "RegistrationPage"
+        )
     }
     response.render('users/signup', params);
 };
@@ -47,8 +43,7 @@ exports.login = function(request, response) {
 };
 
 exports.signin = function(request, response) {
-    var serverResponse = remoteServer.request(
-        "POST",
+    var serverResponse = remoteServer.post(
         "/api/english/login",
         {
             "Params": {
@@ -66,16 +61,12 @@ exports.signin = function(request, response) {
     }
 
     if (serverResponse["Status"] == "ValidationError") {
-        for (var key in serverResponse["ValidationErrors"]) {
-            if (serverResponse["ValidationErrors"][key].length > 0) {
-                params["ValidationErrors"][key] = I18.getValidationError(
-                    "RU",
-                    "LoginPage",
-                    key,
-                    serverResponse["ValidationErrors"][key][0]
-                )
-            }
-        }
+        helperController.updateValidationErrors(
+            params,
+            serverResponse["ValidationErrors"],
+            "RU",
+            "LoginPage"
+        )
     }
     if (serverResponse["Status"] == "Ok") {
         response.cookie("SessionToken", serverResponse["Body"]["SessionToken"]);
@@ -84,8 +75,7 @@ exports.signin = function(request, response) {
 };
 
 exports.logout = function(request, response) {
-	var serverResponse = remoteServer.request(
-        "DELETE",
+	var serverResponse = remoteServer.delete(
         "/api/english/logout",
         {
             "Headers": {
@@ -94,6 +84,6 @@ exports.logout = function(request, response) {
         }
     );
 
-	// response.clearCookie("SessionToken");
+	response.clearCookie("SessionToken");
 	response.redirect('/');
 }

@@ -17,10 +17,14 @@
     </tr>
     <tr>
         <td> Ссылка для отображения </td>
-        <td> {{this.DownloadUrl}} </td>
+        <td> 
+            <a href="{{this.DownloadUrl}}">{{this.DownloadUrl}}</a>
+            <br/>
+            <img src="{{this.DownloadUrl}}" style="max-width: 300px;" />
+        </td>
     </tr>
     <tr>
         <td> Исходная ссылка </td>
-        <td> {{this.OriginUrl}} </td>
+        <td> <a href="{{this.OriginUrl}}">{{this.OriginUrl}}</a> </td>
     </tr>
 </table>
