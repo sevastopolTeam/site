@@ -1,88 +1,84 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 <div class="container">
-    {{#if Status}}
-        Перевод добавлен
-    {{else}}
-        <div class="card bg-light">
-            <article class="card-body mx-auto" style="max-width: 400px;">
-                <h4 class="card-title mt-3 text-center">Добавить слово</h4>
-                <form id="registration-form" method="POST">
-                    <input type="hidden" value="{{Request.body.Id}}" name="Id"/>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                        </div>
-                        <input name="ValueFrom" class="form-control {{#if ValidationErrors.ValueFrom}}is-invalid{{else}}is-valid{{/if}}" placeholder="value from" type="text" value="{{Request.body.ValueFrom}}">
-                        {{#if ValidationErrors.ValueFrom}}
-                            <div class="invalid-feedback">{{ValidationErrors.ValueFrom}}</div>
-                        {{/if}}
-                    </div> <!-- form-group// -->
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">Редактирование</h4>
+            <form id="registration-form" method="POST">
+                <input type="hidden" value="{{Request.body.Id}}" name="Id"/>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input name="ValueFrom" class="form-control {{#if ValidationErrors.ValueFrom}}is-invalid{{else}}is-valid{{/if}}" placeholder="value from" type="text" value="{{Request.body.ValueFrom}}">
+                    {{#if ValidationErrors.ValueFrom}}
+                        <div class="invalid-feedback">{{ValidationErrors.ValueFrom}}</div>
+                    {{/if}}
+                </div> <!-- form-group// -->
 
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                        </div>
-                        <input name="ValueTo" class="form-control {{#if ValidationErrors.ValueTo}}is-invalid{{else}}is-valid{{/if}}" placeholder="value to" type="text" value="{{Request.body.ValueTo}}">
-                        {{#if ValidationErrors.ValueTo}}
-                            <div class="invalid-feedback">{{ValidationErrors.ValueTo}}</div>
-                        {{/if}}
-                    </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input name="ValueTo" class="form-control {{#if ValidationErrors.ValueTo}}is-invalid{{else}}is-valid{{/if}}" placeholder="value to" type="text" value="{{Request.body.ValueTo}}">
+                    {{#if ValidationErrors.ValueTo}}
+                        <div class="invalid-feedback">{{ValidationErrors.ValueTo}}</div>
+                    {{/if}}
+                </div> <!-- form-group// -->
 
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                        </div>
-                        <input name="LanguageFrom" class="form-control {{#if ValidationErrors.LanguageFrom}}is-invalid{{else}}is-valid{{/if}}" placeholder="languate from" type="text" value="{{Request.body.LanguageFrom}}">
-                        {{#if ValidationErrors.LanguageFrom}}
-                            <div class="invalid-feedback">{{ValidationErrors.LanguageFrom}}</div>
-                        {{/if}}
-                    </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input name="LanguageFrom" class="form-control {{#if ValidationErrors.LanguageFrom}}is-invalid{{else}}is-valid{{/if}}" placeholder="languate from" type="text" value="{{Request.body.LanguageFrom}}">
+                    {{#if ValidationErrors.LanguageFrom}}
+                        <div class="invalid-feedback">{{ValidationErrors.LanguageFrom}}</div>
+                    {{/if}}
+                </div> <!-- form-group// -->
 
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                        </div>
-                        <input name="LanguageTo" class="form-control {{#if ValidationErrors.LanguageTo}}is-invalid{{else}}is-valid{{/if}}" placeholder="language to" type="text" value="{{Request.body.LanguageTo}}">
-                        {{#if ValidationErrors.LanguageTo}}
-                            <div class="invalid-feedback">{{ValidationErrors.LanguageTo}}</div>
-                        {{/if}}
-                    </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input name="LanguageTo" class="form-control {{#if ValidationErrors.LanguageTo}}is-invalid{{else}}is-valid{{/if}}" placeholder="language to" type="text" value="{{Request.body.LanguageTo}}">
+                    {{#if ValidationErrors.LanguageTo}}
+                        <div class="invalid-feedback">{{ValidationErrors.LanguageTo}}</div>
+                    {{/if}}
+                </div> <!-- form-group// -->
 
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                        </div>
-                        <input name="OriginUrl" class="form-control {{#if ValidationErrors.OriginUrl}}is-invalid{{else}}is-valid{{/if}}" placeholder="origin url" type="text" value="{{Request.body.OriginUrl}}">
-                        {{#if ValidationErrors.OriginUrl}}
-                            <div class="invalid-feedback">{{ValidationErrors.OriginUrl}}</div>
-                        {{/if}}
-                    </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input name="OriginUrl" class="form-control {{#if ValidationErrors.OriginUrl}}is-invalid{{else}}is-valid{{/if}}" placeholder="origin url" type="text" value="{{Request.body.OriginUrl}}">
+                    {{#if ValidationErrors.OriginUrl}}
+                        <div class="invalid-feedback">{{ValidationErrors.OriginUrl}}</div>
+                    {{/if}}
+                </div> <!-- form-group// -->
 
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                        </div>
-                        <input name="DownloadUrl" class="form-control {{#if ValidationErrors.DownloadUrl}}is-invalid{{else}}is-valid{{/if}}" placeholder="download url" type="text" value="{{Request.body.DownloadUrl}}">
-                        {{#if ValidationErrors.DownloadUrl}}
-                            <div class="invalid-feedback">{{ValidationErrors.DownloadUrl}}</div>
-                        {{/if}}
-                    </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input name="DownloadUrl" class="form-control {{#if ValidationErrors.DownloadUrl}}is-invalid{{else}}is-valid{{/if}}" placeholder="download url" type="text" value="{{Request.body.DownloadUrl}}">
+                    {{#if ValidationErrors.DownloadUrl}}
+                        <div class="invalid-feedback">{{ValidationErrors.DownloadUrl}}</div>
+                    {{/if}}
+                </div> <!-- form-group// -->
 
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                        </div>
-                        <input type="checkbox" name="IsChecked" {{Request.body.IsChecked}}/> Проверено
-                    </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input type="checkbox" name="IsChecked" {{Request.body.IsChecked}}/> Проверено
+                </div> <!-- form-group// -->
 
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"> Добавить </button>
-                    </div> <!-- form-group// -->      
-                </form>
-            </article>
-        </div> <!-- card.// -->
-    {{/if}}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Редактировать </button>
+                </div> <!-- form-group// -->      
+            </form>
+        </article>
+    </div> <!-- card.// -->
 </div> 
 <!--container end.//-->
 <br><br>

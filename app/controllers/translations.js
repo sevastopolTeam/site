@@ -51,7 +51,7 @@ function prepareServerParamsForCreatePage(request) {
 }
 
 function getTranslationInfo() {
-    
+
 }
 
 exports.index = function(request, response) {
@@ -114,7 +114,12 @@ exports.create = function(request, response) {
             "AddTranslationPage"
         )
     }
-    response.render('admin/translations/add', params);
+    console.log(serverResponse);
+    if (serverResponse["Status"] == "Ok") {
+        response.redirect("/admin/translations/");
+    } else {
+        response.render('admin/translations/add', params);
+    }
 };
 
 exports.edit = function(request, response) {
