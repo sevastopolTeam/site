@@ -5,11 +5,12 @@ const helperController = require('../../helpers/helper_controller');
 
 const pageSize = 15;
 
-function prepareParamsForIndexPage(serverResponse) {
+function prepareParamsForIndexPage(request, serverResponse) {
     return {
         "Translations": serverResponse.Body.Translations,
-        "Pages": helperArray.getArrayRange(0, (serverResponse.Body.TranslationsCount - 1) / pageSize - 1)
-    }
+        "Pages": helperArray.getArrayRange(0, (serverResponse.Body.TranslationsCount - 1) / pageSize),
+        "CurrentPage": request.query.page
+    };
 }
 
 function prepareServerParamsForIndexPage(request) {
@@ -20,21 +21,46 @@ function prepareServerParamsForIndexPage(request) {
             "Page": page,
             "PageSize": pageSize
         },
-        "Headers": {
-            "Authorization": request.cookies["SessionToken"]
-        }
+        "Headers": helperController.getHeaders(request)
     }
 }
 
+function prepareServerParamsForCreatePage(request) {
+    downloadUrl = request.body.DownloadUrl;
+    if (downloadUrl.length == 0 && request.body.OriginUrl.length > 0) {
+        downloadUrl = aws.uploadByUrl(request.body.OriginUrl, request.body.ValueFrom + "_" + request.body.ValueTo);
+    }
+    result = {
+        "Params": {
+            "ValueFrom": request.body.ValueFrom,
+            "ValueTo": request.body.ValueTo,
+            "LanguageFrom": request.body.LanguageFrom,
+            "LanguageTo": request.body.LanguageTo,
+            "OriginUrl": request.body.OriginUrl,
+            "DownloadUrl": downloadUrl,
+            "IsChecked": request.body.IsChecked !== undefined
+        },
+        "Headers": helperController.getHeaders(request)
+    }
+
+    if (request.body.Id != undefined) {
+        result["Params"]["Id"] = request.body.Id;
+    }
+
+    return result;
+}
+
+function getTranslationInfo() {
+    
+}
+
 exports.index = function(request, response) {
-    var serverResponse = remoteServer.get(
-        "/api/english/admin/translations",
-        prepareServerParamsForIndexPage(request)
-    );
+    var serverResponse = remoteServer.get("/api/english/admin/translations", prepareServerParamsForIndexPage(request));
+
     if (serverResponse["Error"] == "AccessDenied") {
         response.render('access_denied');
     } else {
-        response.render('admin/translations/index', prepareParamsForIndexPage(serverResponse));
+        response.render('admin/translations/index', prepareParamsForIndexPage(request, serverResponse));
     }
 };
 
@@ -42,9 +68,7 @@ exports.view = function(request, response) {
     var serverResponse = remoteServer.get(
         "/api/english/admin/translations/" + request.params.id,
         {
-            "Headers": {
-                "Authorization": request.cookies["SessionToken"]
-            }
+            "Headers": helperController.getHeaders(request)
         }
     );
     if (serverResponse["Error"] == "AccessDenied") {
@@ -58,55 +82,22 @@ exports.add = function(request, response) {
     response.render('admin/translations/add');
 };
 
-exports.edit = function(request, response) {
-    var serverResponse = remoteServer.get(
-        "/api/english/admin/translations/" + request.params.id,
-        {
-            "Headers": {
-                "Authorization": request.cookies["SessionToken"]
-            }
-        }
-    );
-    if (serverResponse["Error"] == "AccessDenied") {
-        response.render('access_denied');
-    } else {
-        response.render('admin/translations/edit', serverResponse["Body"]);
-    }
-};
-
 exports.delete = function(request, response) {
     var serverResponse = remoteServer.delete(
         "/api/english/admin/translations/" + request.params.id,
         {
-            "Headers": {
-                "Authorization": request.cookies["SessionToken"]
-            }
+            "Headers": helperController.getHeaders(request)
         }
     );
     if (serverResponse["Error"] == "AccessDenied") {
         response.render('access_denied');
     } else {
-        response.redirect('/admin/translations');
+        response.redirect('/admin/translations?page=' + request.query.page);
     }
 };
 
 exports.create = function(request, response) {
-    var serverResponse = remoteServer.post(
-        "/api/english/admin/translations",
-        {
-            "Params": {
-                "ValueFrom": request.body.ValueFrom,
-                "ValueTo": request.body.ValueTo,
-                "LanguageFrom": request.body.LanguageFrom,
-                "LanguageTo": request.body.LanguageTo,
-                "OriginUrl": request.body.OriginUrl,
-                "DownloadUrl": request.body.DownloadUrl
-            },
-            "Headers": {
-                "Authorization": request.cookies["SessionToken"]
-            }
-        }
-    );
+    var serverResponse = remoteServer.post("/api/english/admin/translations", prepareServerParamsForCreatePage(request));
 
     params = {
         Status: (serverResponse["Status"] == "Ok"),
@@ -130,15 +121,14 @@ exports.edit = function(request, response) {
     var serverResponse = remoteServer.get(
         "/api/english/admin/translations/" + request.params.id,
         {
-            "Headers": {
-                "Authorization": request.cookies["SessionToken"]
-            }
+            "Headers": helperController.getHeaders(request)
         }
     );
     if (serverResponse["Error"] == "AccessDenied") {
         response.render('access_denied');
     } else {
         serverResponse["Body"]["Id"] = request.params.id;
+        serverResponse["Body"]["IsChecked"] = serverResponse["Body"]["IsChecked"] ? "checked" : "";
         response.render('admin/translations/edit', {
             "Request": {
                 "body": serverResponse["Body"]
@@ -148,27 +138,7 @@ exports.edit = function(request, response) {
 };
 
 exports.put = function(request, response) {
-    downloadUrl = request.body.DownloadUrl;
-    if (downloadUrl.length == 0 && request.body.OriginUrl.length > 0) {
-        downloadUrl = aws.uploadByUrl(request.body.OriginUrl, request.body.ValueFrom + "_" + request.body.ValueTo);
-    }
-    var serverResponse = remoteServer.put(
-        "/api/english/admin/translations",
-        {
-            "Params": {
-                "Id": request.body.Id,
-                "ValueFrom": request.body.ValueFrom,
-                "ValueTo": request.body.ValueTo,
-                "LanguageFrom": request.body.LanguageFrom,
-                "LanguageTo": request.body.LanguageTo,
-                "OriginUrl": request.body.OriginUrl,
-                "DownloadUrl": downloadUrl
-            },
-            "Headers": {
-                "Authorization": request.cookies["SessionToken"]
-            }
-        }
-    );
+    var serverResponse = remoteServer.put("/api/english/admin/translations", prepareServerParamsForCreatePage(request));
 
     params = {
         Status: (serverResponse["Status"] == "Ok"),

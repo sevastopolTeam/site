@@ -6,6 +6,8 @@ const app = express()
 const http = require("http")
 const bodyParser = require("body-parser");
 
+const env = require('./env');
+
 const translations = require('./app/controllers/translations');
 const users = require('./app/controllers/users');
 const sessions = require('./app/controllers/sessions');
@@ -47,4 +49,4 @@ app.get('/admin/translation-add', translations.add);
 app.post('/admin/translation-add', translations.create);
 
 console.log("Server started")
-app.listen(3000)
+app.listen(env.PORT)
