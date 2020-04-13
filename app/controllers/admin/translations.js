@@ -1,15 +1,19 @@
-const remoteServer = require('../../config/remote_server');
-const aws = require('../../config/aws_s3');
-const helperArray = require('../../helpers/helper_array');
-const helperController = require('../../helpers/helper_controller');
+const remoteServer = require('../../../config/remote_server');
+const aws = require('../../../config/aws_s3');
+const helperArray = require('../../../helpers/helper_array');
+const helperController = require('../../../helpers/helper_controller');
 
 const pageSize = 15;
 
 function prepareParamsForIndexPage(request, serverResponse) {
+    var countPages = Math.ceil((serverResponse.Body.TranslationsCount) / pageSize);
+    var currentPage = request.query.page;
+
     return {
-        "Translations": serverResponse.Body.Translations,
-        "Pages": helperArray.getArrayRange(0, (serverResponse.Body.TranslationsCount - 1) / pageSize),
-        "CurrentPage": request.query.page
+        Translations: serverResponse.Body.Translations,
+        Pages: helperArray.getArrayRange(0, countPages - 1),
+        CurrentPage: currentPage,
+        Pagination: helperController.getPaginationParams(countPages, currentPage),
     };
 }
 
@@ -48,10 +52,6 @@ function prepareServerParamsForCreatePage(request) {
     }
 
     return result;
-}
-
-function getTranslationInfo() {
-
 }
 
 exports.index = function(request, response) {
@@ -98,24 +98,8 @@ exports.delete = function(request, response) {
 
 exports.create = function(request, response) {
     var serverResponse = remoteServer.post("/api/english/admin/translations", prepareServerParamsForCreatePage(request));
-
-    params = {
-        Status: (serverResponse["Status"] == "Ok"),
-        Request: request,
-        ServerResponse: serverResponse,
-        ValidationErrors: {}
-    }
-
-    if (serverResponse["Status"] == "ValidationError") {
-        helperController.updateValidationErrors(
-            params,
-            serverResponse["ValidationErrors"],
-            "RU",
-            "AddTranslationPage"
-        )
-    }
-    console.log(serverResponse);
-    if (serverResponse["Status"] == "Ok") {
+    params = helperController.preparePostParams(serverResponse, request, "RU", "AddTranslationPage");
+    if (params["Status"]) {
         response.redirect("/admin/translations/");
     } else {
         response.render('admin/translations/add', params);
@@ -132,7 +116,6 @@ exports.edit = function(request, response) {
     if (serverResponse["Error"] == "AccessDenied") {
         response.render('access_denied');
     } else {
-        serverResponse["Body"]["Id"] = request.params.id;
         serverResponse["Body"]["IsChecked"] = serverResponse["Body"]["IsChecked"] ? "checked" : "";
         response.render('admin/translations/edit', {
             "Request": {
@@ -144,25 +127,11 @@ exports.edit = function(request, response) {
 
 exports.put = function(request, response) {
     var serverResponse = remoteServer.put("/api/english/admin/translations", prepareServerParamsForCreatePage(request));
+    params = helperController.preparePostParams(serverResponse, request, "RU", "AddTranslationPage");
 
-    params = {
-        Status: (serverResponse["Status"] == "Ok"),
-        Request: request,
-        ServerResponse: serverResponse,
-        ValidationErrors: {}
-    }
-
-    if (serverResponse["Status"] == "ValidationError") {
-        helperController.updateValidationErrors(
-            params,
-            serverResponse["ValidationErrors"],
-            "RU",
-            "AddTranslationPage"
-        )
-    }
-    if (serverResponse["Status"] == "Ok") {
+    if (params["Status"]) {
         response.redirect("/admin/translations/" + request.body.Id);
     } else {
-        response.render('admin/translations/edit', params);
+        response.render('admin/translations/edit', params["Request"]["body"]);
     }
 };

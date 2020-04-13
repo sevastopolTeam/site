@@ -8,9 +8,9 @@ const bodyParser = require("body-parser");
 
 const env = require('./env');
 
-const translations = require('./app/controllers/translations');
+const sessions = require('./app/controllers/admin/sessions');
+const translations = require('./app/controllers/admin/translations');
 const users = require('./app/controllers/users');
-const sessions = require('./app/controllers/sessions');
 
 const aws = require('./config/aws_s3');
 
@@ -19,7 +19,23 @@ var cookieParser = require('cookie-parser')
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
     extname: '.hbs',
-    layoutsDir: path.join(__dirname, 'app/views/layouts')
+    layoutsDir: path.join(__dirname, 'app/views/layouts'),
+    helpers: {
+        isEqual: function(a, b, opts) {
+            if (a == b) {
+                return opts.fn(this) 
+            } else { 
+                return opts.inverse(this) 
+            }
+        },
+        isNotEqual: function(a, b, opts) {
+            if (a != b) {
+                return opts.fn(this) 
+            } else { 
+                return opts.inverse(this) 
+            }
+        }
+    }
 }))
 app.set('view engine', '.hbs')
 app.set('views', path.join(__dirname, 'app/views'))

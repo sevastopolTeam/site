@@ -1,4 +1,4 @@
-const remoteServer = require('../../config/remote_server');
+const remoteServer = require('../../../config/remote_server');
 
 exports.index = function(request, response) {
     var serverResponse = remoteServer.get(
