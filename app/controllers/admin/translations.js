@@ -132,6 +132,6 @@ exports.put = function(request, response) {
     if (params["Status"]) {
         response.redirect("/admin/translations/" + request.body.Id);
     } else {
-        response.render('admin/translations/edit', params["Request"]["body"]);
+        response.render('admin/translations/edit', params);
     }
 };
