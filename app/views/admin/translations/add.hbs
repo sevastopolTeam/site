@@ -69,7 +69,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input type="checkbox" name="IsChecked" {{Request.body.IsChecked}}/> Проверено
+                    <input type="checkbox" name="IsChecked" {{#if Request.body.IsChecked}}checked{{/if}}/> Проверено
                 </div> <!-- form-group// -->
 
                 <div class="form-group">

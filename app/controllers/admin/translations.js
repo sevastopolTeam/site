@@ -116,7 +116,6 @@ exports.edit = function(request, response) {
     if (serverResponse["Error"] == "AccessDenied") {
         response.render('access_denied');
     } else {
-        serverResponse["Body"]["IsChecked"] = serverResponse["Body"]["IsChecked"] ? "checked" : "";
         response.render('admin/translations/edit', {
             "Request": {
                 "body": serverResponse["Body"]

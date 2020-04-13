@@ -10,6 +10,7 @@ const env = require('./env');
 
 const sessions = require('./app/controllers/admin/sessions');
 const translations = require('./app/controllers/admin/translations');
+const word_categories = require('./app/controllers/admin/word_categories');
 const users = require('./app/controllers/users');
 
 const aws = require('./config/aws_s3');
@@ -57,12 +58,21 @@ app.get('/logout', users.logout);
 app.get('/admin/sessions', sessions.index);
 
 app.get('/admin/translations', translations.index);
-app.get('/admin/translation-delete/:id', translations.delete);
+app.get('/admin/translation_delete/:id', translations.delete);
 app.get('/admin/translations/:id', translations.view);
 app.get('/admin/translations/:id/edit', translations.edit);
 app.post('/admin/translations/:id/edit', translations.put);
-app.get('/admin/translation-add', translations.add);
-app.post('/admin/translation-add', translations.create);
+app.get('/admin/translation_add', translations.add);
+app.post('/admin/translation_add', translations.create);
+
+
+app.get('/admin/word_categories', word_categories.index);
+app.get('/admin/word_category_delete/:id', word_categories.delete);
+app.get('/admin/word_categories/:id', word_categories.view);
+app.get('/admin/word_categories/:id/edit', word_categories.edit);
+app.post('/admin/word_categories/:id/edit', word_categories.put);
+app.get('/admin/word_category_add', word_categories.add);
+app.post('/admin/word_category_add', word_categories.create);
 
 console.log("Server started")
 app.listen(env.PORT)
