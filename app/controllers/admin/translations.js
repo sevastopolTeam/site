@@ -7,7 +7,7 @@ const pageSize = 15;
 
 function prepareParamsForIndexPage(request, serverResponse) {
     var countPages = Math.ceil((serverResponse.Body.TranslationsCount) / pageSize);
-    var currentPage = request.query.page;
+    var currentPage = request.query.page == undefined ? 0 : request.query.page;
 
     return {
         Translations: serverResponse.Body.Translations,
