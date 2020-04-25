@@ -1,14 +1,15 @@
 const fs = require('fs');
 
 const content = {
-    "RU": JSON.parse(fs.readFileSync('content/ru.json', 'utf8'))
+    "RU": JSON.parse(fs.readFileSync('content/ru.json', 'utf8')),
+    "EN": JSON.parse(fs.readFileSync('content/en.json', 'utf8'))
 }
 
-exports.content = content;
+exports.Content = content;
 
 function get(path) {
     var current = content;
-    path.split('.').forEach(function(p){ current = current[p]; }); 
+    path.split('.').forEach(function(p){ current = current[p]; });
     return current;
 }
 

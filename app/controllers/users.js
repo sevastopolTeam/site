@@ -1,79 +1,59 @@
 const remoteServer = require('../../config/remote_server');
-const I18 = require('../../config/i18');
 const helperController = require('../../helpers/helper_controller');
 
+function prepareServerParamsForSignupPage(request) {
+    return {
+        "Params": {
+            "Phone": request.body.Phone,
+            "Name": request.body.Name,
+            "Email": request.body.Email,
+            "Password": request.body.Password,
+            "RepeatPassword": request.body.RepeatPassword
+        }
+    }
+}
+
+function prepareServerParamsForSigninPage(request) {
+    return {
+        "Params": {
+            "Email": request.body.Email,
+            "Password": request.body.Password
+        }
+    };
+}
+
 exports.signup = function(request, response) {
-    response.render('users/signup');
+    response.render('users/signup', helperController.prepareParams(request, "Users.Signup"));
 };
 
 exports.create = function(request, response) {
     var serverResponse = remoteServer.post(
         "/api/english/users",
-        {
-            "Params": {
-                "Phone": request.body.Phone,
-                "Name": request.body.Name,
-                "Email": request.body.Email,
-                "Password": request.body.Password,
-                "RepeatPassword": request.body.RepeatPassword
-            }
-        }
+        prepareServerParamsForSignupPage(request)
     );
 
-    console.log(serverResponse);
-
-    params = {
-        Status: (serverResponse["Status"] == "Ok"),
-        Request: request,
-        ServerResponse: serverResponse,
-        ValidationErrors: {}
-    };
-
-    if (serverResponse["Status"] == "ValidationError") {
-        helperController.updateValidationErrors(
-            params,
-            serverResponse["ValidationErrors"],
-            "RU",
-            "Signup"
-        )
+    if (serverResponse["Status"] == "Ok") {
+        response.redirect('/users/login');
+    } else {
+        response.render('users/signup', helperController.prepareParamsWithValidationErrors(request, "Users.Signup", serverResponse));
     }
-    response.render('users/signup', params);
 };
 
 exports.login = function(request, response) {
-    response.render('users/login');
+    response.render('users/login', helperController.prepareParams(request, "Users.Signin"));
 };
 
 exports.signin = function(request, response) {
     var serverResponse = remoteServer.post(
         "/api/english/login",
-        {
-            "Params": {
-                "Email": request.body.Email,
-                "Password": request.body.Password
-            }
-        }
+        prepareServerParamsForSigninPage(request)
     );
-
-    params = {
-        Status: (serverResponse["Status"] == "Ok"),
-        Request: request,
-        ServerResponse: serverResponse,
-        ValidationErrors: {}
-    }
-
-    if (serverResponse["Status"] == "ValidationError") {
-        helperController.updateValidationErrors(
-            params,
-            serverResponse["ValidationErrors"],
-            "RU",
-            "Signin"
-        )
-    }
     if (serverResponse["Status"] == "Ok") {
         response.cookie("SessionToken", serverResponse["Body"]["SessionToken"]);
+        response.redirect('/');
+    } else {
+        response.render('users/login', helperController.prepareParamsWithValidationErrors(request, "Users.Signin", serverResponse));
     }
-    response.render('users/login', params);
 };
 
 exports.logout = function(request, response) {
@@ -88,4 +68,12 @@ exports.logout = function(request, response) {
 
 	response.clearCookie("SessionToken");
 	response.redirect('/');
+}
+
+exports.changeLanguage = function(request, response) {
+    var lang = request.query.language;
+    if (lang == "RU" || lang == "EN") {
+        response.cookie("Language", lang);
+    }
+    response.redirect('/');
 }

@@ -1,70 +1,195 @@
 {
-    "Signup": {
-        "ValidationError": {
-            "Name": {
-                "CanNotBeEmpty": "Введите имя"
+    "MainLayout": {
+        "Menu": {
+            "Home": "Главная",
+            "User": {
+                "Title": "Пользователь",
+                "Login": "Войти",
+                "Signup": "Регистрация",
+                "Logout": "Выйти"
             },
-            "Email": {
-                "CanNotBeEmpty": "Введите email",
-                "MustBeEmail": "Введите корректный email",
-                "AlreadyExists": "Пользователь с таким Email уже существует"
+            "Translations": {
+                "Title": "Переводы",
+                "Translations": "Все переводы",
+                "AddTranslation": "Добавить перевод",
+                "WordCategories": "Все категории",
+                "AddWordCategory": "Добавить категорию"
             },
-            "Phone": {
-                "CanNotBeEmpty": "Введите номер телефона",
-                "MustBePhone": "Введите номер телефона в формате +71234567890"
+            "Learning": {
+                "LearnWords": "Учить слова"
             },
-            "Password": {
-                "CanNotBeEmpty": "Введите пароль"
-            },
-            "RepeatPassword": {
-                "MustBeSame": "Не совпадает с паролем"
+            "ChangeLanguage": {
+                "Title": "Сменить язык"
             }
         }
     },
-    "Signin": {
-        "ValidationError": {
-            "Email": {
-                "CanNotBeEmpty": "Введите email",
-                "MustBeEmail": "Введите корректный email",
-                "NotFound": "Пользователя с таким Email не существует"
+    "Admin": {
+        "Translations": {
+            "Index": {
+                "Pagination": {
+                    "Next": "Следующая",
+                    "Begin": "Начало",
+                    "End": "Конец",
+                    "Previous": "Предыдущая"
+                },
+                "Table": {
+                    "Th": {
+                        "Actions": "Действия",
+                        "ValueFrom": "Слово",
+                        "ValueTo": "Перевод",
+                        "LanguageFrom": "Исходный язык",
+                        "LanguageTo": "Язык перевода",
+                        "DownloadUrl": "Ссылка для отображения",
+                        "OriginUrl": "Исходная ссылка",
+                        "PartOfSpeech": "Часть речи"
+                    },
+                    "Tr": {
+                        "Actions": {
+                            "View": "Просмотр",
+                            "Edit": "Редактирование",
+                            "Delete": "Удаление"
+                        }
+                    }
+                }
             },
-            "Password": {
-                "CanNotBeEmpty": "Введите пароль",
-                "Incorrect": "Пароль неверный"
+            "View": {
+                "Table": {
+                    "Titles": {
+                        "ValueFrom": "Слово",
+                        "ValueTo": "Перевод",
+                        "LanguageFrom": "Исходный язык",
+                        "LanguageTo": "Язык перевода",
+                        "DownloadUrl": "Ссылка для отображения",
+                        "OriginUrl": "Исходная ссылка",
+                        "PartOfSpeech": "Часть речи"
+                    }
+                }
+            },
+            "Add": {
+                "Title": "Добавление слова",
+                "Inputs": {
+                    "ValueFrom": "Слово",
+                    "ValueTo": "Перевод",
+                    "LanguageFrom": "Исходный язык",
+                    "LanguageTo": "Язык перевода",
+                    "DownloadUrl": "Ссылка для отображения",
+                    "OriginUrl": "Исходная ссылка",
+                    "PartOfSpeech": "Часть речи",
+                    "IsChecked": "Проверено"
+                },
+                "Buttons": {
+                    "Submit": "Добавить"
+                },
+                "ValidationErrors": {
+                    "ValueFrom": {
+                        "AlreadyExists": "Уже существует",
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    },
+                    "ValueTo": {
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    },
+                    "LanguageFrom": {
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    },
+                    "LanguageTo": {
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    }
+                }
+            },
+            "Edit": {
+                "Title": "Редактирование слова",
+                "Inputs": {
+                    "ValueFrom": "Слово",
+                    "ValueTo": "Перевод",
+                    "LanguageFrom": "Исходный язык",
+                    "LanguageTo": "Язык перевода",
+                    "DownloadUrl": "Ссылка для отображения",
+                    "OriginUrl": "Исходная ссылка",
+                    "PartOfSpeech": "Часть речи",
+                    "IsChecked": "Проверено"
+                },
+                "Buttons": {
+                    "Submit": "Отправить"
+                },
+                "ValidationErrors": {
+                    "ValueFrom": {
+                        "AlreadyExists": "Уже существует",
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    },
+                    "ValueTo": {
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    },
+                    "LanguageFrom": {
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    },
+                    "LanguageTo": {
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    }
+                }
             }
         }
     },
-    "AdminTranslationAdd": {
-        "ValidationError": {
-            "ValueFrom": {
-                "AlreadyExists": "Уже существует",
-                "CanNotBeEmpty": "Не может быть пустым"
+    "Users": {
+        "Signup": {
+            "Title": "Регистрация",
+            "Inputs": {
+                "Email": "E-Mail",
+                "Name": "Имя",
+                "Phone": "Телефон",
+                "Password": "Пароль",
+                "RepeatPassword": "Пароль еще раз"
             },
-            "ValueTo": {
-                "CanNotBeEmpty": "Не может быть пустым"
+            "Buttons": {
+                "Submit": "Регистрация"
             },
-            "LanguageFrom": {
-                "CanNotBeEmpty": "Не может быть пустым"
+            "Links": {
+                "Login": "Войти",
+                "AlreadyRegistered": "Уже зарегистрированы?"
             },
-            "LanguageTo": {
-                "CanNotBeEmpty": "Не может быть пустым"
+            "ValidationErrors": {
+                "Name": {
+                    "CanNotBeEmpty": "Введите имя"
+                },
+                "Email": {
+                    "CanNotBeEmpty": "Не может быть пустым",
+                    "MustBeEmail": "Должен быть корректный email",
+                    "AlreadyExists": "Пользователь с таким Email уже существует"
+                },
+                "Phone": {
+                    "CanNotBeEmpty": "Не может быть пустым",
+                    "MustBePhone": "Должен быть в формате +71234567890"
+                },
+                "Password": {
+                    "CanNotBeEmpty": "Не может быть пустым"
+                },
+                "RepeatPassword": {
+                    "MustBeSame": "Не совпадает с паролем"
+                }
             }
-        }
-    },
-    "AdminTranslationEdit": {
-        "ValidationError": {
-            "ValueFrom": {
-                "AlreadyExists": "Уже существует",
-                "CanNotBeEmpty": "Не может быть пустым"
+        },
+        "Signin": {
+            "Title": "Вход",
+            "Inputs": {
+                "Email": "E-Mail",
+                "Password": "Пароль"
             },
-            "ValueTo": {
-                "CanNotBeEmpty": "Не может быть пустым"
+            "Buttons": {
+                "Submit": "Вход"
             },
-            "LanguageFrom": {
-                "CanNotBeEmpty": "Не может быть пустым"
+            "Links": {
+                "Signup": "Регистрация",
+                "NotRegistered": "Еще не зарегистрированы?"
             },
-            "LanguageTo": {
-                "CanNotBeEmpty": "Не может быть пустым"
+            "ValidationErrors": {
+                "Email": {
+                    "CanNotBeEmpty": "Не может быть пустым",
+                    "MustBeEmail": "Должен быть корректный email",
+                    "NotFound": "Пользователя с таким Email не существует"
+                },
+                "Password": {
+                    "CanNotBeEmpty": "Не может быть пустым",
+                    "Incorrect": "Пароль неверный"
+                }
             }
         }
     }

@@ -1,0 +1,196 @@
+{
+    "MainLayout": {
+        "Menu": {
+            "Home": "Home",
+            "User": {
+                "Title": "User",
+                "Login": "Login",
+                "Signup": "Signup",
+                "Logout": "Logout"
+            },
+            "Translations": {
+                "Title": "Translations",
+                "Translations": "Translations",
+                "AddTranslation": "Add translation",
+                "WordCategories": "Word categories",
+                "AddWordCategory": "Add word category"
+            },
+            "Learning": {
+                "LearnWords": "Learn words"
+            },
+            "ChangeLanguage": {
+                "Title": "Change language"
+            }
+        }
+    },
+    "Admin": {
+        "Translations": {
+            "Index": {
+                "Pagination": {
+                    "Next": "Next",
+                    "Begin": "Begin",
+                    "End": "End",
+                    "Previous": "Previous"
+                },
+                "Table": {
+                    "Th": {
+                        "Actions": "Actions",
+                        "ValueFrom": "Word",
+                        "ValueTo": "Translation",
+                        "LanguageFrom": "Language from",
+                        "LanguageTo": "Language to",
+                        "DownloadUrl": "Download url",
+                        "OriginUrl": "Original url",
+                        "PartOfSpeech": "Part of speech"
+                    },
+                    "Tr": {
+                        "Actions": {
+                            "View": "View",
+                            "Edit": "Edit",
+                            "Delete": "Delete"
+                        }
+                    }
+                }
+            },
+            "View": {
+                "Table": {
+                    "Titles": {
+                        "ValueFrom": "Word",
+                        "ValueTo": "Translation",
+                        "LanguageFrom": "Language from",
+                        "LanguageTo": "Language to",
+                        "DownloadUrl": "Download url",
+                        "OriginUrl": "Original url",
+                        "PartOfSpeech": "Part of speech"
+                    }
+                }
+            },
+            "Add": {
+                "Title": "Add word",
+                "Inputs": {
+                    "ValueFrom": "Word",
+                    "ValueTo": "Translation",
+                    "LanguageFrom": "Language from",
+                    "LanguageTo": "Language to",
+                    "DownloadUrl": "Download url",
+                    "OriginUrl": "Original url",
+                    "PartOfSpeech": "Part of speech",
+                    "IsChecked": "Is checked"
+                },
+                "Buttons": {
+                    "Submit": "Add"
+                },
+                "ValidationErrors": {
+                    "ValueFrom": {
+                        "AlreadyExists": "Already Exists",
+                        "CanNotBeEmpty": "Can't be empty"
+                    },
+                    "ValueTo": {
+                        "CanNotBeEmpty": "Can't be empty"
+                    },
+                    "LanguageFrom": {
+                        "CanNotBeEmpty": "Can't be empty"
+                    },
+                    "LanguageTo": {
+                        "CanNotBeEmpty": "Can't be empty"
+                    }
+                }
+            },
+            "Edit": {
+                "Title": "Edit",
+                "Inputs": {
+                    "ValueFrom": "Word",
+                    "ValueTo": "Translation",
+                    "LanguageFrom": "Language from",
+                    "LanguageTo": "Language to",
+                    "DownloadUrl": "Download url",
+                    "OriginUrl": "Original url",
+                    "PartOfSpeech": "Part of speech",
+                    "IsChecked": "Is checked"
+                },
+                "Buttons": {
+                    "Submit": "Submit"
+                },
+                "ValidationErrors": {
+                    "ValueFrom": {
+                        "AlreadyExists": "Already Exists",
+                        "CanNotBeEmpty": "Can't be empty"
+                    },
+                    "ValueTo": {
+                        "CanNotBeEmpty": "Can't be empty"
+                    },
+                    "LanguageFrom": {
+                        "CanNotBeEmpty": "Can't be empty"
+                    },
+                    "LanguageTo": {
+                        "CanNotBeEmpty": "Can't be empty"
+                    }
+                }
+            }
+        }
+    },
+    "Users": {
+        "Signup": {
+            "Title": "Sign up",
+            "Inputs": {
+                "Email": "E-Mail",
+                "Name": "Name",
+                "Phone": "Phone",
+                "Password": "Password",
+                "RepeatPassword": "Repeat Password"
+            },
+            "Buttons": {
+                "Submit": "Sign up"
+            },
+            "Links": {
+                "Login": "Login",
+                "AlreadyRegistered": "Already registered?"
+            },
+            "ValidationErrors": {
+                "Name": {
+                    "CanNotBeEmpty": "Can't be empty"
+                },
+                "Email": {
+                    "CanNotBeEmpty": "Can't be empty",
+                    "MustBeEmail": "Must be correct email",
+                    "AlreadyExists": "Already Exists"
+                },
+                "Phone": {
+                    "CanNotBeEmpty": "Can't be empty",
+                    "MustBePhone": "Must be in format +71234567890"
+                },
+                "Password": {
+                    "CanNotBeEmpty": "Can't be empty"
+                },
+                "RepeatPassword": {
+                    "MustBeSame": "Must be same with Password"
+                }
+            }
+        },
+        "Signin": {
+            "Title": "Login",
+            "Inputs": {
+                "Email": "E-Mail",
+                "Password": "Password"
+            },
+            "Buttons": {
+                "Submit": "Login"
+            },
+            "Links": {
+                "Signup": "Sign up",
+                "NotRegistered": "Not registered?"
+            },
+            "ValidationErrors": {
+                "Email": {
+                    "CanNotBeEmpty": "Can't be empty",
+                    "MustBeEmail": "Must be correct email",
+                    "NotFound": "Email is not found"
+                },
+                "Password": {
+                    "CanNotBeEmpty": "Can't be empty",
+                    "Incorrect": "Incorrect password"
+                }
+            }
+        }
+    }
+}

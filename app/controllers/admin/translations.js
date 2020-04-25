@@ -10,13 +10,12 @@ function prepareParamsForIndexPage(request, serverResponse) {
     var countPages = Math.ceil((serverResponse.Body.TranslationsCount) / pageSize);
     var currentPage = request.query.page == undefined ? 0 : request.query.page;
 
-    return {
+    return helperController.prepareParams(request, "Admin.Translations.Index", {
         Translations: serverResponse.Body.Translations,
         Pages: helperArray.getArrayRange(0, countPages - 1),
         CurrentPage: currentPage,
         Pagination: helperController.getPaginationParams(countPages, currentPage),
-        I18: 
-    };
+    });
 }
 
 function prepareServerParamsForIndexPage(request) {
@@ -77,12 +76,18 @@ exports.view = function(request, response) {
     if (serverResponse["Error"] == "AccessDenied") {
         response.render('access_denied');
     } else {
-        response.render('admin/translations/view', serverResponse["Body"]);
+        response.render(
+            'admin/translations/view',
+            helperController.prepareParams(request, "Admin.Translations.View", serverResponse["Body"])
+        );
     }
 };
 
 exports.add = function(request, response) {
-    response.render('admin/translations/add');
+    response.render(
+        'admin/translations/add',
+        helperController.prepareParams(request, "Admin.Translations.Add")
+    );
 };
 
 exports.delete = function(request, response) {
@@ -101,7 +106,7 @@ exports.delete = function(request, response) {
 
 exports.create = function(request, response) {
     var serverResponse = remoteServer.post("/api/english/admin/translations", prepareServerParamsForCreatePage(request));
-    params = helperController.preparePostParams(serverResponse, request, "RU", "AdminTranslationAdd");
+    params = helperController.prepareParamsWithValidationErrors(request, "Admin.Translations.Add", serverResponse);
     if (params["Status"]) {
         response.redirect("/admin/translations/");
     } else {
@@ -119,17 +124,20 @@ exports.edit = function(request, response) {
     if (serverResponse["Error"] == "AccessDenied") {
         response.render('access_denied');
     } else {
-        response.render('admin/translations/edit', {
-            "Request": {
-                "body": serverResponse["Body"]
-            }
-        });
+        response.render(
+            'admin/translations/edit',
+            helperController.prepareParams(request, "Admin.Translations.Edit", {
+                "Request": {
+                    "body": serverResponse["Body"]
+                }
+            })
+        )
     }
 };
 
 exports.put = function(request, response) {
     var serverResponse = remoteServer.put("/api/english/admin/translations", prepareServerParamsForCreatePage(request));
-    params = helperController.preparePostParams(serverResponse, request, "RU", "AdminTranslationEdit");
+    params = helperController.prepareParamsWithValidationErrors(request, "Admin.Translations.Edit", serverResponse);
 
     if (params["Status"]) {
         response.redirect("/admin/translations/" + request.body.Id);
