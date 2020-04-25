@@ -20,6 +20,8 @@ exports.create = function(request, response) {
         }
     );
 
+    console.log(serverResponse);
+
     params = {
         Status: (serverResponse["Status"] == "Ok"),
         Request: request,

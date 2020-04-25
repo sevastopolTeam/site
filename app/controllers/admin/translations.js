@@ -42,6 +42,7 @@ function prepareServerParamsForCreatePage(request) {
             "LanguageTo": request.body.LanguageTo,
             "OriginUrl": request.body.OriginUrl,
             "DownloadUrl": downloadUrl,
+            "PartOfSpeech": request.body.PartOfSpeech,
             "IsChecked": request.body.IsChecked !== undefined
         },
         "Headers": helperController.getHeaders(request)

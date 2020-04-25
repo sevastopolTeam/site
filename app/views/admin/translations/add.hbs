@@ -49,6 +49,16 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
+                    <input name="PartOfSpeech" class="form-control {{#if ValidationErrors.LanguageTo}}is-invalid{{else}}is-valid{{/if}}" placeholder="part of speech" type="text" value="{{Request.body.PartOfSpeech}}">
+                    {{#if ValidationErrors.PartOfSpeech}}
+                        <div class="invalid-feedback">{{ValidationErrors.PartOfSpeech}}</div>
+                    {{/if}}
+                </div> <!-- form-group// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
                     <input name="OriginUrl" class="form-control {{#if ValidationErrors.OriginUrl}}is-invalid{{else}}is-valid{{/if}}" placeholder="origin url" type="text" value="{{Request.body.OriginUrl}}">
                     {{#if ValidationErrors.OriginUrl}}
                         <div class="invalid-feedback">{{ValidationErrors.OriginUrl}}</div>
