@@ -34,7 +34,7 @@ exports.create = function(request, response) {
             params,
             serverResponse["ValidationErrors"],
             "RU",
-            "RegistrationPage"
+            "Signup"
         )
     }
     response.render('users/signup', params);
@@ -67,7 +67,7 @@ exports.signin = function(request, response) {
             params,
             serverResponse["ValidationErrors"],
             "RU",
-            "LoginPage"
+            "Signin"
         )
     }
     if (serverResponse["Status"] == "Ok") {

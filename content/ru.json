@@ -1,5 +1,5 @@
 {
-    "RegistrationPage": {
+    "Signup": {
         "ValidationError": {
             "Name": {
                 "CanNotBeEmpty": "Введите имя"
@@ -21,7 +21,7 @@
             }
         }
     },
-    "LoginPage": {
+    "Signin": {
         "ValidationError": {
             "Email": {
                 "CanNotBeEmpty": "Введите email",
@@ -34,7 +34,24 @@
             }
         }
     },
-    "AddTranslationPage": {
+    "AdminTranslationAdd": {
+        "ValidationError": {
+            "ValueFrom": {
+                "AlreadyExists": "Уже существует",
+                "CanNotBeEmpty": "Не может быть пустым"
+            },
+            "ValueTo": {
+                "CanNotBeEmpty": "Не может быть пустым"
+            },
+            "LanguageFrom": {
+                "CanNotBeEmpty": "Не может быть пустым"
+            },
+            "LanguageTo": {
+                "CanNotBeEmpty": "Не может быть пустым"
+            }
+        }
+    },
+    "AdminTranslationEdit": {
         "ValidationError": {
             "ValueFrom": {
                 "AlreadyExists": "Уже существует",

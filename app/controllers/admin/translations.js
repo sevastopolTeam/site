@@ -2,6 +2,7 @@ const remoteServer = require('../../../config/remote_server');
 const aws = require('../../../config/aws_s3');
 const helperArray = require('../../../helpers/helper_array');
 const helperController = require('../../../helpers/helper_controller');
+const I18 = require('../../../config/i18');
 
 const pageSize = 15;
 
@@ -14,6 +15,7 @@ function prepareParamsForIndexPage(request, serverResponse) {
         Pages: helperArray.getArrayRange(0, countPages - 1),
         CurrentPage: currentPage,
         Pagination: helperController.getPaginationParams(countPages, currentPage),
+        I18: 
     };
 }
 
@@ -99,7 +101,7 @@ exports.delete = function(request, response) {
 
 exports.create = function(request, response) {
     var serverResponse = remoteServer.post("/api/english/admin/translations", prepareServerParamsForCreatePage(request));
-    params = helperController.preparePostParams(serverResponse, request, "RU", "AddTranslationPage");
+    params = helperController.preparePostParams(serverResponse, request, "RU", "AdminTranslationAdd");
     if (params["Status"]) {
         response.redirect("/admin/translations/");
     } else {
@@ -127,7 +129,7 @@ exports.edit = function(request, response) {
 
 exports.put = function(request, response) {
     var serverResponse = remoteServer.put("/api/english/admin/translations", prepareServerParamsForCreatePage(request));
-    params = helperController.preparePostParams(serverResponse, request, "RU", "AddTranslationPage");
+    params = helperController.preparePostParams(serverResponse, request, "RU", "AdminTranslationEdit");
 
     if (params["Status"]) {
         response.redirect("/admin/translations/" + request.body.Id);

@@ -5,6 +5,15 @@ const content = {
 }
 
 exports.content = content;
+
+function get(path) {
+    var current = content;
+    path.split('.').forEach(function(p){ current = current[p]; }); 
+    return current;
+}
+
 exports.getValidationError = function(language, page, field, error) {
     return content[language][page]["ValidationError"][field][error];
 }
+
+exports.get = get;
