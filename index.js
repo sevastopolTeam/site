@@ -12,6 +12,7 @@ const sessions = require('./app/controllers/admin/sessions');
 const translations = require('./app/controllers/admin/translations');
 const word_categories = require('./app/controllers/admin/word_categories');
 const users = require('./app/controllers/users');
+const main = require('./app/controllers/main');
 
 const aws = require('./config/aws_s3');
 
@@ -43,17 +44,16 @@ app.set('views', path.join(__dirname, 'app/views'))
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cookieParser())
+app.use(cookieParser());
 
-app.get('/', (request, response) => {
-    response.render('home');
-});
+app.get('/', main.home);
 
 app.get('/signup', users.signup);
 app.post('/signup', users.create);
 app.get('/login', users.login);
 app.post('/login', users.signin);
 app.get('/logout', users.logout);
+app.get('/change_language', users.changeLanguage);
 
 app.get('/admin/sessions', sessions.index);
 

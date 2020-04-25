@@ -3,13 +3,13 @@
 <div class="container">
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px;">
-            <h4 class="card-title mt-3 text-center">Добавить слово</h4>
+            <h4 class="card-title mt-3 text-center">{{I18.Title}}</h4>
             <form id="registration-form" method="POST">
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input name="ValueFrom" class="form-control {{#if ValidationErrors.ValueFrom}}is-invalid{{else}}is-valid{{/if}}" placeholder="value from" type="text" value="{{Request.body.ValueFrom}}">
+                    <input name="ValueFrom" class="form-control {{#if ValidationErrors.ValueFrom}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.ValueFrom}}" type="text" value="{{Request.body.ValueFrom}}">
                     {{#if ValidationErrors.ValueFrom}}
                         <div class="invalid-feedback">{{ValidationErrors.ValueFrom}}</div>
                     {{/if}}
@@ -19,7 +19,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input name="ValueTo" class="form-control {{#if ValidationErrors.ValueTo}}is-invalid{{else}}is-valid{{/if}}" placeholder="value to" type="text" value="{{Request.body.ValueTo}}">
+                    <input name="ValueTo" class="form-control {{#if ValidationErrors.ValueTo}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.ValueTo}}" type="text" value="{{Request.body.ValueTo}}">
                     {{#if ValidationErrors.ValueTo}}
                         <div class="invalid-feedback">{{ValidationErrors.ValueTo}}</div>
                     {{/if}}
@@ -29,7 +29,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input name="LanguageFrom" class="form-control {{#if ValidationErrors.LanguageFrom}}is-invalid{{else}}is-valid{{/if}}" placeholder="languate from" type="text" value="{{Request.body.LanguageFrom}}">
+                    <input name="LanguageFrom" class="form-control {{#if ValidationErrors.LanguageFrom}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.LanguageFrom}}" type="text" value="{{Request.body.LanguageFrom}}">
                     {{#if ValidationErrors.LanguageFrom}}
                         <div class="invalid-feedback">{{ValidationErrors.LanguageFrom}}</div>
                     {{/if}}
@@ -39,7 +39,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input name="LanguageTo" class="form-control {{#if ValidationErrors.LanguageTo}}is-invalid{{else}}is-valid{{/if}}" placeholder="language to" type="text" value="{{Request.body.LanguageTo}}">
+                    <input name="LanguageTo" class="form-control {{#if ValidationErrors.LanguageTo}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.ValueTo}}" type="text" value="{{Request.body.LanguageTo}}">
                     {{#if ValidationErrors.LanguageTo}}
                         <div class="invalid-feedback">{{ValidationErrors.LanguageTo}}</div>
                     {{/if}}
@@ -49,7 +49,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input name="PartOfSpeech" class="form-control {{#if ValidationErrors.LanguageTo}}is-invalid{{else}}is-valid{{/if}}" placeholder="part of speech" type="text" value="{{Request.body.PartOfSpeech}}">
+                    <input name="PartOfSpeech" class="form-control {{#if ValidationErrors.LanguageTo}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.PartOfSpeech}}" type="text" value="{{Request.body.PartOfSpeech}}">
                     {{#if ValidationErrors.PartOfSpeech}}
                         <div class="invalid-feedback">{{ValidationErrors.PartOfSpeech}}</div>
                     {{/if}}
@@ -59,7 +59,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input name="OriginUrl" class="form-control {{#if ValidationErrors.OriginUrl}}is-invalid{{else}}is-valid{{/if}}" placeholder="origin url" type="text" value="{{Request.body.OriginUrl}}">
+                    <input name="OriginUrl" class="form-control {{#if ValidationErrors.OriginUrl}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.OriginUrl}}" type="text" value="{{Request.body.OriginUrl}}">
                     {{#if ValidationErrors.OriginUrl}}
                         <div class="invalid-feedback">{{ValidationErrors.OriginUrl}}</div>
                     {{/if}}
@@ -69,7 +69,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input name="DownloadUrl" class="form-control {{#if ValidationErrors.DownloadUrl}}is-invalid{{else}}is-valid{{/if}}" placeholder="download url" type="text" value="{{Request.body.DownloadUrl}}">
+                    <input name="DownloadUrl" class="form-control {{#if ValidationErrors.DownloadUrl}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.DownloadUrl}}" type="text" value="{{Request.body.DownloadUrl}}">
                     {{#if ValidationErrors.DownloadUrl}}
                         <div class="invalid-feedback">{{ValidationErrors.DownloadUrl}}</div>
                     {{/if}}
@@ -79,11 +79,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input type="checkbox" name="IsChecked" {{#if Request.body.IsChecked}}checked{{/if}}/> Проверено
+                    <input type="checkbox" name="IsChecked" {{#if Request.body.IsChecked}}checked{{/if}}/> {{I18.Inputs.IsChecked}}
                 </div> <!-- form-group// -->
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Добавить </button>
+                    <button type="submit" class="btn btn-primary btn-block"> {{I18.Buttons.Submit}} </button>
                 </div> <!-- form-group// -->      
             </form>
         </article>
@@ -93,7 +93,7 @@
 <br><br>
 <article class="bg-secondary mb-3">  
     <div class="card-body text-center">
-        <h3 class="text-white mt-3">Спасибо, что посетили наш сайт</h3>
+        <h3 class="text-white mt-3">Test</h3>
     </div>
     <br><br>
 </article>

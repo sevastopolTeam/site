@@ -1,39 +1,35 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 <div class="container">
-    {{#if Status}}
-        Пользователь зарегистрирован
-    {{else}}
-        <div class="card bg-light">
-            <article class="card-body mx-auto" style="max-width: 400px;">
-                <h4 class="card-title mt-3 text-center">Вход</h4>
-                <form id="registration-form" method="POST">
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                        </div>
-                        <input name="Email" class="form-control {{#if ValidationErrors.Email}}is-invalid{{else}}is-valid{{/if}}" placeholder="e-mail" type="text" value="{{Request.body.Email}}">
-                        {{#if ValidationErrors.Email}}
-                            <div class="invalid-feedback">{{ValidationErrors.Email}}</div>
-                        {{/if}}
-                    </div> <!-- form-group// -->
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                        </div>
-                        <input name="Password" class="form-control {{#if ValidationErrors.Password}}is-invalid{{else}}is-valid{{/if}}" placeholder="придумайте пароль" type="password">
-                        {{#if ValidationErrors.Password}}
-                            <div class="invalid-feedback">{{ValidationErrors.Password}}</div>
-                        {{/if}}
-                    </div> <!-- form-group// -->
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"> Вход </button>
-                    </div> <!-- form-group// -->      
-                    <p class="text-center">Еще не зарегистрированы? <a href="">Регистрация</a> </p>
-                </form>
-            </article>
-        </div> <!-- card.// -->
-    {{/if}}
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">{{I18.Title}}</h4>
+            <form id="registration-form" method="POST">
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input name="Email" class="form-control {{#if ValidationErrors.Email}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.Email}}" type="text" value="{{Request.body.Email}}">
+                    {{#if ValidationErrors.Email}}
+                        <div class="invalid-feedback">{{ValidationErrors.Email}}</div>
+                    {{/if}}
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input name="Password" class="form-control {{#if ValidationErrors.Password}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.Password}}" type="password">
+                    {{#if ValidationErrors.Password}}
+                        <div class="invalid-feedback">{{ValidationErrors.Password}}</div>
+                    {{/if}}
+                </div> <!-- form-group// -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> {{I18.Buttons.Submit}} </button>
+                </div> <!-- form-group// -->
+                <p class="text-center">{{I18.Links.NotRegistered}} <a href="/signup">{{I18.Links.Signup}}</a> </p>
+            </form>
+        </article>
+    </div> <!-- card.// -->
 </div> 
 <!--container end.//-->
 <br><br>
