@@ -21,6 +21,9 @@
             "ChangeLanguage": {
                 "Title": "Сменить язык"
             }
+        },
+        "Footer": {
+            "Title": "Спасибо, что посетили наш сайт"
         }
     },
     "Admin": {
@@ -123,6 +126,66 @@
                         "CanNotBeEmpty": "Не может быть пустым"
                     },
                     "LanguageTo": {
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    }
+                }
+            }
+        },
+        "WordCategories": {
+            "Index": {
+                "Pagination": {
+                    "Next": "Следующая",
+                    "Begin": "Начало",
+                    "End": "Конец",
+                    "Previous": "Предыдущая"
+                },
+                "Table": {
+                    "Th": {
+                        "Actions": "Действия",
+                        "Name": "Название"
+                    },
+                    "Tr": {
+                        "Actions": {
+                            "View": "Просмотр",
+                            "Edit": "Редактирование",
+                            "Delete": "Удаление"
+                        }
+                    }
+                }
+            },
+            "View": {
+                "Table": {
+                    "Titles": {
+                        "Name": "Название"
+                    }
+                }
+            },
+            "Add": {
+                "Title": "Добавление категории",
+                "Inputs": {
+                    "Name": "Название"
+                },
+                "Buttons": {
+                    "Submit": "Добавить"
+                },
+                "ValidationErrors": {
+                    "Name": {
+                        "AlreadyExists": "Уже существует",
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    }
+                }
+            },
+            "Edit": {
+                "Title": "Редактирование категории",
+                "Inputs": {
+                    "Name": "Название"
+                },
+                "Buttons": {
+                    "Submit": "Отправить"
+                },
+                "ValidationErrors": {
+                    "Name": {
+                        "AlreadyExists": "Уже существует",
                         "CanNotBeEmpty": "Не может быть пустым"
                     }
                 }

@@ -20,6 +20,9 @@
             },
             "ChangeLanguage": {
                 "Title": "Change language"
+            },
+            "Footer": {
+                "Title": "Thanks"
             }
         }
     },
@@ -123,6 +126,66 @@
                         "CanNotBeEmpty": "Can't be empty"
                     },
                     "LanguageTo": {
+                        "CanNotBeEmpty": "Can't be empty"
+                    }
+                }
+            }
+        },
+        "WordCategories": {
+            "Index": {
+                "Pagination": {
+                    "Next": "Next",
+                    "Begin": "Begin",
+                    "End": "End",
+                    "Previous": "Previous"
+                },
+                "Table": {
+                    "Th": {
+                        "Actions": "Actions",
+                        "Name": "Name"
+                    },
+                    "Tr": {
+                        "Actions": {
+                            "View": "View",
+                            "Edit": "Edit",
+                            "Delete": "Delete"
+                        }
+                    }
+                }
+            },
+            "View": {
+                "Table": {
+                    "Titles": {
+                        "Name": "Name"
+                    }
+                }
+            },
+            "Add": {
+                "Title": "Add category",
+                "Inputs": {
+                    "Name": "Name"
+                },
+                "Buttons": {
+                    "Submit": "Add"
+                },
+                "ValidationErrors": {
+                    "Name": {
+                        "AlreadyExists": "Already Exists",
+                        "CanNotBeEmpty": "Can't be empty"
+                    }
+                }
+            },
+            "Edit": {
+                "Title": "Edit category",
+                "Inputs": {
+                    "Name": "Name"
+                },
+                "Buttons": {
+                    "Submit": "Submit"
+                },
+                "ValidationErrors": {
+                    "Name": {
+                        "AlreadyExists": "Already exists",
                         "CanNotBeEmpty": "Can't be empty"
                     }
                 }

@@ -3,29 +3,22 @@
 <div class="container">
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px;">
-            <h4 class="card-title mt-3 text-center">Добавить категорию</h4>
+            <h4 class="card-title mt-3 text-center">{{I18.Title}}</h4>
             <form id="registration-form" method="POST">
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input name="Name" class="form-control {{#if ValidationErrors.Name}}is-invalid{{else}}is-valid{{/if}}" placeholder="name" type="text" value="{{Request.body.Name}}">
+                    <input name="Name" class="form-control {{#if ValidationErrors.Name}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.Name}}" type="text" value="{{Request.body.Name}}">
                     {{#if ValidationErrors.Name}}
                         <div class="invalid-feedback">{{ValidationErrors.Name}}</div>
                     {{/if}}
                 </div> <!-- form-group// -->
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Добавить </button>
+                    <button type="submit" class="btn btn-primary btn-block"> {{I18.Buttons.Submit}} </button>
                 </div> <!-- form-group// -->      
             </form>
         </article>
     </div> <!-- card.// -->
 </div> 
 <!--container end.//-->
-<br><br>
-<article class="bg-secondary mb-3">  
-    <div class="card-body text-center">
-        <h3 class="text-white mt-3">Спасибо, что посетили наш сайт</h3>
-    </div>
-    <br><br>
-</article>
