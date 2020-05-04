@@ -50,9 +50,19 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input name="PartOfSpeech" class="form-control {{#if ValidationErrors.LanguageTo}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.PartOfSpeech}}" type="text" value="{{Request.body.PartOfSpeech}}">
+                    <input name="PartOfSpeech" class="form-control {{#if ValidationErrors.PartOfSpeech}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.PartOfSpeech}}" type="text" value="{{Request.body.PartOfSpeech}}">
                     {{#if ValidationErrors.PartOfSpeech}}
                         <div class="invalid-feedback">{{ValidationErrors.PartOfSpeech}}</div>
+                    {{/if}}
+                </div> <!-- form-group// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input name="Frequency" class="form-control {{#if ValidationErrors.Frequency}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.Frequency}}" type="text" value="{{Request.body.Frequency}}">
+                    {{#if ValidationErrors.Frequency}}
+                        <div class="invalid-feedback">{{ValidationErrors.Frequency}}</div>
                     {{/if}}
                 </div> <!-- form-group// -->
 

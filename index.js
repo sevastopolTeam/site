@@ -65,7 +65,6 @@ app.post('/admin/translations/:id/edit', translations.put);
 app.get('/admin/translation_add', translations.add);
 app.post('/admin/translation_add', translations.create);
 
-
 app.get('/admin/word_categories', word_categories.index);
 app.get('/admin/word_category_delete/:id', word_categories.delete);
 app.get('/admin/word_categories/:id', word_categories.view);

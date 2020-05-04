@@ -41,7 +41,9 @@
                         "LanguageTo": "Язык перевода",
                         "DownloadUrl": "Ссылка для отображения",
                         "OriginUrl": "Исходная ссылка",
-                        "PartOfSpeech": "Часть речи"
+                        "PartOfSpeech": "Часть речи",
+                        "Frequency": "Популярность",
+                        "IsChecked": "Проверено"
                     },
                     "Tr": {
                         "Actions": {
@@ -61,7 +63,9 @@
                         "LanguageTo": "Язык перевода",
                         "DownloadUrl": "Ссылка для отображения",
                         "OriginUrl": "Исходная ссылка",
-                        "PartOfSpeech": "Часть речи"
+                        "PartOfSpeech": "Часть речи",
+                        "Frequency": "Популярность",
+                        "IsChecked": "Проверено"
                     }
                 }
             },
@@ -75,7 +79,8 @@
                     "DownloadUrl": "Ссылка для отображения",
                     "OriginUrl": "Исходная ссылка",
                     "PartOfSpeech": "Часть речи",
-                    "IsChecked": "Проверено"
+                    "IsChecked": "Проверено",
+                    "Frequency": "Популярность"
                 },
                 "Buttons": {
                     "Submit": "Добавить"
@@ -93,6 +98,11 @@
                     },
                     "LanguageTo": {
                         "CanNotBeEmpty": "Не может быть пустым"
+                    },
+                    "Frequency": {
+                        "CanNotBeEmpty": "Не может быть пустым",
+                        "MustBeUnsignedInt": "Должно быть целым положительным числом",
+                        "MustBeLessThan": "Слишком большое число"
                     }
                 }
             },
@@ -106,7 +116,8 @@
                     "DownloadUrl": "Ссылка для отображения",
                     "OriginUrl": "Исходная ссылка",
                     "PartOfSpeech": "Часть речи",
-                    "IsChecked": "Проверено"
+                    "IsChecked": "Проверено",
+                    "Frequency": "Популярность"
                 },
                 "Buttons": {
                     "Submit": "Отправить"
@@ -124,6 +135,11 @@
                     },
                     "LanguageTo": {
                         "CanNotBeEmpty": "Не может быть пустым"
+                    },
+                    "Frequency": {
+                        "CanNotBeEmpty": "Не может быть пустым",
+                        "MustBeUnsignedInt": "Должно быть целым положительным числом",
+                        "MustBeLessThan": "Слишком большое число"
                     }
                 }
             }

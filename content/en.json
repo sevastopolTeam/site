@@ -41,7 +41,8 @@
                         "LanguageTo": "Language to",
                         "DownloadUrl": "Download url",
                         "OriginUrl": "Original url",
-                        "PartOfSpeech": "Part of speech"
+                        "PartOfSpeech": "Part of speech",
+                        "IsChecked": "Is checked"
                     },
                     "Tr": {
                         "Actions": {
@@ -61,7 +62,9 @@
                         "LanguageTo": "Language to",
                         "DownloadUrl": "Download url",
                         "OriginUrl": "Original url",
-                        "PartOfSpeech": "Part of speech"
+                        "PartOfSpeech": "Part of speech",
+                        "Frequency": "Frequency",
+                        "IsChecked": "Is checked"
                     }
                 }
             },
@@ -75,7 +78,8 @@
                     "DownloadUrl": "Download url",
                     "OriginUrl": "Original url",
                     "PartOfSpeech": "Part of speech",
-                    "IsChecked": "Is checked"
+                    "IsChecked": "Is checked",
+                    "Frequency": "Frequency"
                 },
                 "Buttons": {
                     "Submit": "Add"
@@ -93,6 +97,10 @@
                     },
                     "LanguageTo": {
                         "CanNotBeEmpty": "Can't be empty"
+                    },
+                    "Frequency": {
+                        "CanNotBeEmpty": "Can't be empty",
+                        "MustBeInt": "Must be int"
                     }
                 }
             },
@@ -106,7 +114,8 @@
                     "DownloadUrl": "Download url",
                     "OriginUrl": "Original url",
                     "PartOfSpeech": "Part of speech",
-                    "IsChecked": "Is checked"
+                    "IsChecked": "Is checked",
+                    "Frequency": "Frequency"
                 },
                 "Buttons": {
                     "Submit": "Submit"
@@ -124,6 +133,10 @@
                     },
                     "LanguageTo": {
                         "CanNotBeEmpty": "Can't be empty"
+                    },
+                    "Frequency": {
+                        "CanNotBeEmpty": "Can't be empty",
+                        "MustBeInt": "Must be int"
                     }
                 }
             }

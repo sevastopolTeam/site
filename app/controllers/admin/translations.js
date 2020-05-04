@@ -7,11 +7,11 @@ const I18 = require('../../../config/i18');
 const pageSize = 15;
 
 function prepareParamsForIndexPage(request, serverResponse) {
-    var countPages = Math.ceil((serverResponse.Body.TranslationsCount) / pageSize);
+    var countPages = Math.ceil((serverResponse.Body.RecordsCount) / pageSize);
     var currentPage = request.query.page == undefined ? 0 : request.query.page;
 
     return helperController.prepareParams(request, "Admin.Translations.Index", {
-        Translations: serverResponse.Body.Translations,
+        Translations: serverResponse.Body.Records,
         Pages: helperArray.getArrayRange(0, countPages - 1),
         CurrentPage: currentPage,
         Pagination: helperController.getPaginationParams(countPages, currentPage),
@@ -44,6 +44,7 @@ function prepareServerParamsForCreatePage(request) {
             "OriginUrl": request.body.OriginUrl,
             "DownloadUrl": downloadUrl,
             "PartOfSpeech": request.body.PartOfSpeech,
+            "Frequency": request.body.Frequency,
             "IsChecked": request.body.IsChecked !== undefined
         },
         "Headers": helperController.getHeaders(request)
