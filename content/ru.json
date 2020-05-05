@@ -143,6 +143,158 @@
                     }
                 }
             }
+        },
+        "Users": {
+            "Index": {
+                "Pagination": {
+                    "Next": "Следующая",
+                    "Begin": "Начало",
+                    "End": "Конец",
+                    "Previous": "Предыдущая"
+                },
+                "Table": {
+                    "Th": {
+                        "Actions": "Действия",
+                        "Name": "Имя",
+                        "Email": "E-mail"
+                    },
+                    "Tr": {
+                        "Actions": {
+                            "View": "Просмотр",
+                            "Edit": "Редактирование",
+                            "Delete": "Удаление"
+                        }
+                    }
+                }
+            },
+            "View": {
+                "Table": {
+                    "Titles": {
+                        "Name": "Имя",
+                        "Email": "E-mail"
+                    }
+                }
+            },
+            "Add": {
+                "Title": "Добавление пользователя",
+                "Inputs": {
+                        "Name": "Имя",
+                        "Email": "E-mail"
+                },
+                "Buttons": {
+                    "Submit": "Добавить"
+                },
+                "ValidationErrors": {
+                    "Name": {
+                        "CanNotBeEmpty": "Введите имя"
+                    },
+                    "Email": {
+                        "CanNotBeEmpty": "Не может быть пустым",
+                        "MustBeEmail": "Должен быть корректный email",
+                        "AlreadyExists": "Пользователь с таким Email уже существует"
+                    },
+                    "Phone": {
+                        "CanNotBeEmpty": "Не может быть пустым",
+                        "MustBePhone": "Должен быть в формате +71234567890"
+                    },
+                    "Password": {
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    },
+                    "RepeatPassword": {
+                        "MustBeSame": "Не совпадает с паролем"
+                    }
+                }
+            },
+            "Edit": {
+                "Title": "Редактирование пользователя",
+                "Inputs": {
+                        "Name": "Имя",
+                        "Email": "E-mail"
+                },
+                "Buttons": {
+                    "Submit": "Отправить"
+                },
+                "ValidationErrors": {
+                    "Name": {
+                        "CanNotBeEmpty": "Введите имя"
+                    },
+                    "Email": {
+                        "CanNotBeEmpty": "Не может быть пустым",
+                        "MustBeEmail": "Должен быть корректный email",
+                        "AlreadyExists": "Пользователь с таким Email уже существует"
+                    },
+                    "Phone": {
+                        "CanNotBeEmpty": "Не может быть пустым",
+                        "MustBePhone": "Должен быть в формате +71234567890"
+                    },
+                    "Password": {
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    },
+                    "RepeatPassword": {
+                        "MustBeSame": "Не совпадает с паролем"
+                    }
+                }
+            }
+        },
+        "WordCategories": {
+            "Index": {
+                "Pagination": {
+                    "Next": "Следующая",
+                    "Begin": "Начало",
+                    "End": "Конец",
+                    "Previous": "Предыдущая"
+                },
+                "Table": {
+                    "Th": {
+                        "Actions": "Действия",
+                        "Name": "Название"
+                    },
+                    "Tr": {
+                        "Actions": {
+                            "View": "Просмотр",
+                            "Edit": "Редактирование",
+                            "Delete": "Удаление"
+                        }
+                    }
+                }
+            },
+            "View": {
+                "Table": {
+                    "Titles": {
+                        "Name": "Название"
+                    }
+                }
+            },
+            "Add": {
+                "Title": "Добавление категории",
+                "Inputs": {
+                    "Name": "Название"
+                },
+                "Buttons": {
+                    "Submit": "Добавить"
+                },
+                "ValidationErrors": {
+                    "Name": {
+                        "AlreadyExists": "Уже существует",
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    }
+                }
+            },
+            "Edit": {
+                "Title": "Редактирование категории",
+                "Inputs": {
+                    "Name": "Название"
+                },
+                "Buttons": {
+                    "Submit": "Отправить"
+                },
+                "ValidationErrors": {
+                    "Name": {
+                        "AlreadyExists": "Уже существует",
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    }
+                }
+            }
         }
     },
     "Users": {

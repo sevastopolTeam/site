@@ -12,6 +12,7 @@ const sessions = require('./app/controllers/admin/sessions');
 const translations = require('./app/controllers/admin/translations');
 const word_categories = require('./app/controllers/admin/word_categories');
 const users = require('./app/controllers/users');
+const adminUsers = require('./app/controllers/admin/users');
 const main = require('./app/controllers/main');
 
 const aws = require('./config/aws_s3');
@@ -72,6 +73,14 @@ app.get('/admin/word_categories/:id/edit', word_categories.edit);
 app.post('/admin/word_categories/:id/edit', word_categories.put);
 app.get('/admin/word_category_add', word_categories.add);
 app.post('/admin/word_category_add', word_categories.create);
+
+app.get('/admin/users', adminUsers.index);
+app.get('/admin/user_delete/:id', adminUsers.delete);
+app.get('/admin/users/:id', adminUsers.view);
+app.get('/admin/users/:id/edit', adminUsers.edit);
+app.post('/admin/users/:id/edit', adminUsers.put);
+app.get('/admin/user_add', adminUsers.add);
+app.post('/admin/user_add', adminUsers.create);
 
 console.log("Server started")
 app.listen(env.PORT)

@@ -5,6 +5,7 @@
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">{{I18.Title}}</h4>
             <form id="registration-form" method="POST">
+                <input type="hidden" value="{{Request.body.Id}}" name="Id"/>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -53,7 +54,6 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block"> {{I18.Buttons.Submit}} </button>
                 </div> <!-- form-group// -->      
-                <p class="text-center">{{I18.Links.AlreadyRegistered}} <a href="/login">{{I18.Links.Login}}</a> </p>
             </form>
         </article>
     </div> <!-- card.// -->
