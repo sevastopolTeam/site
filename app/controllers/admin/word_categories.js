@@ -6,14 +6,9 @@ const helperController = require('../../../helpers/helper_controller');
 const pageSize = 15;
 
 function prepareParamsForIndexPage(request, serverResponse) {
-    var countPages = Math.ceil((serverResponse.Body.RecordsCount) / pageSize);
-    var currentPage = request.query.page == undefined ? 0 : request.query.page;
-
     return helperController.prepareParams(request, "Admin.WordCategories.Index", {
         WordCategories: serverResponse.Body.Records,
-        Pages: helperArray.getArrayRange(0, countPages - 1),
-        CurrentPage: currentPage,
-        Pagination: helperController.getPaginationParams(countPages, currentPage),
+        Pagination: helperController.getPaginationParams(serverResponse.Body.RecordsCount, request.query.page, pageSize),
     });
 }
 

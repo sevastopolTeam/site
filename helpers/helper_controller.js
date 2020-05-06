@@ -51,7 +51,9 @@ exports.prepareParamsWithValidationErrors = function(request, prefix, serverResp
 exports.updateValidationErrors = updateValidationErrors;
 exports.prepareParams = prepareParams;
 
-exports.getPaginationParams = function(countPages, currentPage) {
+exports.getPaginationParams = function(recordsCount, page, pageSize) {
+    var countPages = Math.ceil(recordsCount / pageSize);
+    var currentPage = page == undefined ? 0 : page;
     return {
         First: 0,
         BeforePrevious: currentPage - 2 >= 0 ? currentPage - 2 : undefined,

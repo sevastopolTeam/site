@@ -57,14 +57,7 @@ exports.signin = function(request, response) {
 };
 
 exports.logout = function(request, response) {
-	var serverResponse = remoteServer.delete(
-        "/api/english/logout",
-        {
-            "Headers": {
-                "Authorization": request.cookies["SessionToken"]
-            }
-        }
-    );
+	var serverResponse = remoteServer.delete("/api/english/logout", {"Headers": helperController.getHeaders(request)});
 
 	response.clearCookie("SessionToken");
 	response.redirect('/');
