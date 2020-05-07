@@ -26,6 +26,7 @@ function prepareServerParamsForIndexPage(request) {
 }
 
 function prepareServerParamsForCreatePage(request) {
+    console.log(request.body);
     downloadUrl = request.body.DownloadUrl;
     if (downloadUrl.length == 0 && request.body.OriginUrl.length > 0) {
         downloadUrl = aws.uploadByUrl(request.body.OriginUrl, request.body.ValueFrom + "_" + request.body.ValueTo);

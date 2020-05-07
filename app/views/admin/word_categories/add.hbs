@@ -5,20 +5,10 @@
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">{{I18.Title}}</h4>
             <form id="registration-form" method="POST">
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                    </div>
-                    <input name="Name" class="form-control {{#if ValidationErrors.Name}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.ValueFrom}}" type="text" value="{{Request.body.Name}}">
-                    {{#if ValidationErrors.Name}}
-                        <div class="invalid-feedback">{{ValidationErrors.Name}}</div>
-                    {{/if}}
-                </div> <!-- form-group// -->
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> {{I18.Buttons.Submit}} </button>
-                </div> <!-- form-group// -->      
+                {{> input Field="Name" ValidationError=ValidationErrors.Name Title=I18.Inputs.Name Value=Request.body.Name}}
+                
+                {{> submit Title=I18.Buttons.Submit}} 
             </form>
         </article>
     </div> <!-- card.// -->
-</div> 
-<!--container end.//-->
+</div>

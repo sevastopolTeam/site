@@ -1,0 +1,9 @@
+<div class="form-group input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+    </div>
+    <input name="{{Field}}" class="form-control {{#if ValidationError}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{Title}}" type="text" value="{{Value}}">
+    {{#if ValidationError}}
+        <div class="invalid-feedback">{{ValidationError}}</div>
+    {{/if}}
+</div>

@@ -1,0 +1,39 @@
+<nav aria-label="{{label}} navigation">
+  <ul class="pagination">
+    <li class="page-item {{#isEqual Pagination.Previous undefined}}disabled{{/isEqual}}">
+        <a class="page-link" href="{{url}}?page={{Pagination.First}}">{{I18.Pagination.Begin}}</a>
+    </li>
+    <li class="page-item {{#isEqual Pagination.Previous undefined}}disabled{{/isEqual}}">
+        <a class="page-link" href="{{url}}?page={{Pagination.Previous}}">{{I18.Pagination.Previous}}</a>
+    </li>
+    {{#isNotEqual Pagination.BeforePrevious undefined}}
+    <li class="page-item">
+        <a class="page-link" href="{{url}}?page={{Pagination.BeforePrevious}}">{{Pagination.BeforePrevious}}</a>
+    </li>
+    {{/isNotEqual}}
+    {{#isNotEqual Pagination.Previous undefined}}
+    <li class="page-item">
+        <a class="page-link" href="{{url}}?page={{Pagination.Previous}}">{{Pagination.Previous}}</a>
+    </li>
+    {{/isNotEqual}}
+    <li class="page-item active">
+        <a class="page-link" href="{{url}}?page={{Pagination.Current}}">{{Pagination.Current}}</a>
+    </li>
+    {{#isNotEqual Pagination.Next undefined}}
+    <li class="page-item">
+        <a class="page-link" href="{{url}}?page={{Pagination.Next}}">{{Pagination.Next}}</a>
+    </li>
+    {{/isNotEqual}}
+    {{#isNotEqual Pagination.AfterNext undefined}}
+    <li class="page-item">
+        <a class="page-link" href="{{url}}?page={{Pagination.AfterNext}}">{{Pagination.AfterNext}}</a>
+    </li>
+    {{/isNotEqual}}
+    <li class="page-item {{#isEqual Pagination.Next undefined}}disabled{{/isEqual}}">
+        <a class="page-link" href="{{url}}?page={{Pagination.Next}}">{{I18.Pagination.Next}}</a>
+    </li>
+    <li class="page-item {{#isEqual Pagination.Next undefined}}disabled{{/isEqual}}">
+        <a class="page-link" href="{{url}}?page={{Pagination.Last}}">{{I18.Pagination.End}}</a>
+    </li>
+  </ul>
+</nav>

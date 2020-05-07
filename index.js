@@ -22,6 +22,7 @@ app.engine('.hbs', exphbs({
     defaultLayout: 'main',
     extname: '.hbs',
     layoutsDir: path.join(__dirname, 'app/views/layouts'),
+    partialsDir: path.join(__dirname, 'app/views/partials'),
     helpers: {
         isEqual: function(a, b, opts) {
             if (a == b) {

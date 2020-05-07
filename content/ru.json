@@ -8,12 +8,14 @@
                 "Signup": "Регистрация",
                 "Logout": "Выйти"
             },
-            "Translations": {
-                "Title": "Переводы",
+            "Admin": {
+                "Title": "Admin",
                 "Translations": "Все переводы",
                 "AddTranslation": "Добавить перевод",
                 "WordCategories": "Все категории",
-                "AddWordCategory": "Добавить категорию"
+                "AddWordCategory": "Добавить категорию",
+                "Users": "Все пользователи",
+                "AddUser": "Добавить пользователя"
             },
             "Learning": {
                 "LearnWords": "Учить слова"

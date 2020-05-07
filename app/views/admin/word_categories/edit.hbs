@@ -6,28 +6,9 @@
             <h4 class="card-title mt-3 text-center">{{I18.Title}}</h4>
             <form id="registration-form" method="POST">
                 <input type="hidden" value="{{Request.body.Id}}" name="Id"/>
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                    </div>
-                    <input name="Name" class="form-control {{#if ValidationErrors.Name}}is-invalid{{else}}is-valid{{/if}}" placeholder="name" type="text" value="{{Request.body.Name}}">
-                    {{#if ValidationErrors.Name}}
-                        <div class="invalid-feedback">{{ValidationErrors.Name}}</div>
-                    {{/if}}
-                </div> <!-- form-group// -->
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Редактировать </button>
-                </div> <!-- form-group// -->
+                {{> input Field="Name" ValidationError=ValidationErrors.Name Title=I18.Inputs.Name Value=Request.body.Name}}
+                {{> submit Title=I18.Buttons.Submit}}
             </form>
         </article>
     </div> <!-- card.// -->
 </div> 
-<!--container end.//-->
-<br><br>
-<article class="bg-secondary mb-3">  
-    <div class="card-body text-center">
-        <h3 class="text-white mt-3">Спасибо, что посетили наш сайт</h3>
-    </div>
-    <br><br>
-</article>
