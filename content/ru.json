@@ -181,7 +181,10 @@
                 "Title": "Добавление пользователя",
                 "Inputs": {
                         "Name": "Имя",
-                        "Email": "E-mail"
+                        "Email": "E-mail",
+                        "Phone": "Телефон",
+                        "Password": "Пароль",
+                        "RepeatPassword": "Повторите пароль"
                 },
                 "Buttons": {
                     "Submit": "Добавить"
@@ -211,7 +214,10 @@
                 "Title": "Редактирование пользователя",
                 "Inputs": {
                         "Name": "Имя",
-                        "Email": "E-mail"
+                        "Email": "E-mail",
+                        "Phone": "Телефон",
+                        "Password": "Пароль",
+                        "RepeatPassword": "Повторите пароль"
                 },
                 "Buttons": {
                     "Submit": "Отправить"
