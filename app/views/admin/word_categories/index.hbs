@@ -2,24 +2,25 @@
 
 <br/>
 {{> pagination url="/admin/word_categories" label="Word categories"}}
+{{> button Title=I18.Buttons.New Link="/admin/word_category_add"}}
 
 <table class="table table-striped table-responsive">
     <thead>
         <tr>
-            <th> Действия </th>
-            <th> Название </th>
+            <th> {{I18.Table.Th.Actions}} </th>
+            <th> {{I18.Table.Th.Name}} </th>
         </tr>
     </thead>
     {{#each WordCategories}}
         <tr>
             <td>
-                <a href="/admin/word_categories/{{this.Id}}" title="Просмотр">
+                <a href="/admin/word_categories/{{this.Id}}" title="{{../I18.Table.Tr.Actions.View}}">
                     <i class="fas fa-eye"></i>
                 </a> 
-                <a href="/admin/word_categories/{{this.Id}}/edit" title="Редактирование">
+                <a href="/admin/word_categories/{{this.Id}}/edit" title="{{../I18.Table.Tr.Actions.Edit}}">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a href="/admin/word_category_delete/{{this.Id}}?page={{../Pagination.Current}}" title="Удаление">
+                <a href="/admin/word_category_delete/{{this.Id}}?page={{../Pagination.Current}}" title="{{../I18.Table.Tr.Actions.Delete}}">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </td>

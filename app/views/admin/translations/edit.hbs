@@ -5,16 +5,16 @@
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">{{I18.Title}}</h4>
             <form id="registration-form" method="POST">
-                <input type="hidden" value="{{Request.body.Id}}" name="Id"/>
-                {{> input Field="ValueFrom" ValidationError=ValidationErrors.ValueFrom Title=I18.Inputs.ValueFrom Value=Request.body.ValueFrom}}
-                {{> input Field="ValueTo" ValidationError=ValidationErrors.ValueTo Title=I18.Inputs.ValueTo Value=Request.body.ValueTo}}
-                {{> input Field="LanguageFrom" ValidationError=ValidationErrors.LanguageFrom Title=I18.Inputs.LanguageFrom Value=Request.body.LanguageFrom}}
-                {{> input Field="LanguageTo" ValidationError=ValidationErrors.LanguageTo Title=I18.Inputs.LanguageTo Value=Request.body.LanguageTo}}
-                {{> input Field="PartOfSpeech" ValidationError=ValidationErrors.PartOfSpeech Title=I18.Inputs.PartOfSpeech Value=Request.body.PartOfSpeech}}
-                {{> input Field="Frequency" ValidationError=ValidationErrors.Frequency Title=I18.Inputs.Frequency Value=Request.body.Frequency}}
-                {{> input Field="OriginUrl" ValidationError=ValidationErrors.OriginUrl Title=I18.Inputs.OriginUrl Value=Request.body.OriginUrl}}
-                {{> input Field="DownloadUrl" ValidationError=ValidationErrors.DownloadUrl Title=I18.Inputs.DownloadUrl Value=Request.body.DownloadUrl}}
-                {{> checkbox Field="IsChecked" Title=I18.Inputs.IsChecked Value=Request.body.IsChecked}}
+                <input type="hidden" value="{{Form.Id}}" name="Id"/>
+                {{> input Field="ValueFrom" ValidationError=ValidationErrors.ValueFrom Title=I18.Inputs.ValueFrom Value=Form.ValueFrom}}
+                {{> input Field="ValueTo" ValidationError=ValidationErrors.ValueTo Title=I18.Inputs.ValueTo Value=Form.ValueTo}}
+                {{> input Field="LanguageFrom" ValidationError=ValidationErrors.LanguageFrom Title=I18.Inputs.LanguageFrom Value=Form.LanguageFrom}}
+                {{> input Field="LanguageTo" ValidationError=ValidationErrors.LanguageTo Title=I18.Inputs.LanguageTo Value=Form.LanguageTo}}
+                {{> input Field="PartOfSpeech" ValidationError=ValidationErrors.PartOfSpeech Title=I18.Inputs.PartOfSpeech Value=Form.PartOfSpeech}}
+                {{> input Field="Frequency" ValidationError=ValidationErrors.Frequency Title=I18.Inputs.Frequency Value=Form.Frequency}}
+                {{> input Field="OriginUrl" ValidationError=ValidationErrors.OriginUrl Title=I18.Inputs.OriginUrl Value=Form.OriginUrl}}
+                {{> input Field="DownloadUrl" ValidationError=ValidationErrors.DownloadUrl Title=I18.Inputs.DownloadUrl Value=Form.DownloadUrl}}
+                {{> checkbox Field="IsChecked" Title=I18.Inputs.IsChecked Value=Form.IsChecked}}
 
                 {{> submit Title=I18.Buttons.Submit}}
             </form>

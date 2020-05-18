@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <br/>
 {{> pagination url="/admin/translations" label="Translations"}}
+{{> button Title=I18.Buttons.New Link="/admin/translation_add"}}
 
 <table class="table table-striped table-responsive">
     <thead>
@@ -8,8 +9,6 @@
             <th> {{I18.Table.Th.Actions}} </th>
             <th> {{I18.Table.Th.ValueFrom}} </th>
             <th> {{I18.Table.Th.ValueTo}} </th>
-            <!-- <th> {{I18.Table.Th.LanguageFrom}} </th> -->
-            <!-- <th> {{I18.Table.Th.LanguageTo}} </th> -->
             <th> {{I18.Table.Th.PartOfSpeech}} </th>
             <th> {{I18.Table.Th.Frequency}} </th>
             <th> {{I18.Table.Th.DownloadUrl}} </th>
@@ -32,8 +31,6 @@
             </td>
             <td> {{ValueFrom}} </td>
             <td> {{ValueTo}} </td>
-            <!-- <td> {{LanguageFrom}} </td> -->
-            <!-- <td> {{LanguageTo}} </td> -->
             <td> {{PartOfSpeech}} </td>
             <td> {{Frequency}} </td>
             <td> {{DownloadUrl}} </td>

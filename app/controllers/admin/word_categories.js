@@ -1,14 +1,14 @@
 const remoteServer = require('../../../config/remote_server');
-const aws = require('../../../config/aws_s3');
-const helperArray = require('../../../helpers/helper_array');
 const helperController = require('../../../helpers/helper_controller');
-
-const pageSize = 15;
 
 function prepareParamsForIndexPage(request, serverResponse) {
     return helperController.prepareParams(request, "Admin.WordCategories.Index", {
         WordCategories: serverResponse.Body.Records,
-        Pagination: helperController.getPaginationParams(serverResponse.Body.RecordsCount, request.query.page, pageSize),
+        Pagination: helperController.getPaginationParams(
+            serverResponse.Body.RecordsCount,
+            request.query.page,
+            helperController.PAGE_SIZE_DEFAULT
+        )
     });
 }
 
@@ -18,7 +18,7 @@ function prepareServerParamsForIndexPage(request) {
     return {
         "Params": {
             "Page": page,
-            "PageSize": pageSize
+            "PageSize": helperController.PAGE_SIZE_DEFAULT
         },
         "Headers": helperController.getHeaders(request)
     }
@@ -39,13 +39,32 @@ function prepareServerParamsForCreatePage(request) {
     return result;
 }
 
+function prepareServerParamsForCreateTranslation(request) {
+    result = {
+        "Params": {
+            "TranslationId": request.body.TranslationId,
+            "WordCategoryId": request.body.WordCategoryId
+        },
+        "Headers": helperController.getHeaders(request)
+    }
+
+    return result;
+}
+
 exports.index = function(request, response) {
     var serverResponse = remoteServer.get("/api/english/admin/word_categories", prepareServerParamsForIndexPage(request));
 
     if (serverResponse["Error"] == "AccessDenied") {
         response.render('access_denied');
     } else {
-        response.render('admin/word_categories/index', prepareParamsForIndexPage(request, serverResponse));
+        response.render('admin/word_categories/index', helperController.prepareParams(request, "Admin.WordCategories.Index", {
+            WordCategories: serverResponse.Body.Records,
+            Pagination: helperController.getPaginationParams(
+                serverResponse.Body.RecordsCount,
+                request.query.page,
+                helperController.PAGE_SIZE_DEFAULT
+            )
+        }));
     }
 };
 
@@ -56,20 +75,46 @@ exports.view = function(request, response) {
             "Headers": helperController.getHeaders(request)
         }
     );
+
+    var serverResponseTranslations = remoteServer.get(
+        "/api/english/admin/translation_to_categories",
+        {
+            "Params": {
+                "WordCategoryId": request.params.id
+            },
+            "Headers": helperController.getHeaders(request)
+        }
+    );
+    serverResponse["Body"]["AddTranslationLink"] = "/admin/word_categories_add_translation?word_category_id=" + request.params.id;
+    console.log(serverResponseTranslations["Body"]["Records"]);
     if (serverResponse["Error"] == "AccessDenied") {
         response.render('access_denied');
     } else {
-        response.render('admin/word_categories/view', serverResponse["Body"]);
+        response.render(
+            'admin/word_categories/view',
+            helperController.prepareParams(request, "Admin.WordCategories.View", {
+                "WordCategory": serverResponse["Body"],
+                "Translations": serverResponseTranslations["Body"]["Records"],
+                "Pagination": helperController.getPaginationParams(
+                    serverResponse.Body.RecordsCount,
+                    request.query.page,
+                    helperController.PAGE_SIZE_DEFAULT
+                )
+            })
+        );
     }
 };
 
 exports.add = function(request, response) {
-    response.render('admin/word_categories/add');
+    response.render(
+        'admin/word_categories/add',
+        helperController.prepareParams(request, "Admin.WordCategories.Add")
+    );
 };
 
 exports.create = function(request, response) {
     var serverResponse = remoteServer.post("/api/english/admin/word_categories", prepareServerParamsForCreatePage(request));
-    params = helperController.preparePostParams(serverResponse, request, "RU", "AddWordCategoryPage");
+    params = helperController.prepareParamsWithValidationErrors(request, "Admin.WordCategories.Add", serverResponse);
     if (params["Status"]) {
         response.redirect("/admin/word_categories/");
     } else {
@@ -87,17 +132,16 @@ exports.edit = function(request, response) {
     if (serverResponse["Error"] == "AccessDenied") {
         response.render('access_denied');
     } else {
-        response.render('admin/word_categories/edit', {
-            "Request": {
-                "body": serverResponse["Body"]
-            }
-        });
+        response.render(
+            'admin/word_categories/edit',
+            helperController.prepareParams(request, "Admin.WordCategories.Edit", { "Form": serverResponse["Body"] })
+        )
     }
 };
 
 exports.put = function(request, response) {
     var serverResponse = remoteServer.put("/api/english/admin/word_categories", prepareServerParamsForCreatePage(request));
-    params = helperController.preparePostParams(serverResponse, request, "RU", "AddWordCategoryPage");
+    params = helperController.prepareParamsWithValidationErrors(request, "Admin.WordCategories.Edit", serverResponse,);
 
     if (params["Status"]) {
         response.redirect("/admin/word_categories/" + request.body.Id);
@@ -117,5 +161,27 @@ exports.delete = function(request, response) {
         response.render('access_denied');
     } else {
         response.redirect('/admin/word_categories?page=' + request.query.page);
+    }
+};
+
+exports.add_translation = function(request, response) {
+    params = { "Form": { "WordCategoryId": request.query.word_category_id } };
+    response.render(
+        'admin/word_categories/add_translation',
+        helperController.prepareParams(request, "Admin.WordCategories.AddTranslation", params)
+    );
+};
+
+exports.create_translation = function(request, response) {
+    var serverResponse = remoteServer.post(
+        "/api/english/admin/translation_to_categories",
+        prepareServerParamsForCreateTranslation(request)
+    );
+    params = helperController.prepareParamsWithValidationErrors(request, "Admin.WordCategories.AddTranslation", serverResponse);
+    console.log(params)
+    if (params["Status"]) {
+        response.redirect("/admin/word_categories/");
+    } else {
+        response.render('admin/word_categories/add_translation', params);
     }
 };

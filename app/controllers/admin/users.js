@@ -1,17 +1,5 @@
 const remoteServer = require('../../../config/remote_server');
-const aws = require('../../../config/aws_s3');
-const helperArray = require('../../../helpers/helper_array');
 const helperController = require('../../../helpers/helper_controller');
-const I18 = require('../../../config/i18');
-
-const pageSize = 15;
-
-function prepareParamsForIndexPage(request, serverResponse) {
-    return helperController.prepareParams(request, "Admin.Users.Index", {
-        Users: serverResponse.Body.Records,
-        Pagination: helperController.getPaginationParams(serverResponse.Body.RecordsCount, request.query.page, pageSize),
-    });
-}
 
 function prepareServerParamsForIndexPage(request) {
     var page = request.query.page;
@@ -19,7 +7,7 @@ function prepareServerParamsForIndexPage(request) {
     return {
         "Params": {
             "Page": page,
-            "PageSize": pageSize
+            "PageSize": helperController.PAGE_SIZE_DEFAULT
         },
         "Headers": helperController.getHeaders(request)
     }
@@ -50,7 +38,14 @@ exports.index = function(request, response) {
     if (serverResponse["Error"] == "AccessDenied") {
         response.render('access_denied');
     } else {
-        response.render('admin/users/index', prepareParamsForIndexPage(request, serverResponse));
+        response.render('admin/users/index', helperController.prepareParams(request, "Admin.Users.Index", {
+            Users: serverResponse.Body.Records,
+            Pagination: helperController.getPaginationParams(
+                serverResponse.Body.RecordsCount,
+                request.query.page,
+                helperController.PAGE_SIZE_DEFAULT
+            )
+        }));
     }
 };
 
@@ -115,11 +110,7 @@ exports.edit = function(request, response) {
     } else {
         response.render(
             'admin/users/edit',
-            helperController.prepareParams(request, "Admin.Users.Edit", {
-                "Request": {
-                    "body": serverResponse["Body"]
-                }
-            })
+            helperController.prepareParams(request, "Admin.Users.Edit", { "Form": serverResponse["Body"] })
         )
     }
 };

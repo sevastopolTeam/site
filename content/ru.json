@@ -10,12 +10,9 @@
             },
             "Admin": {
                 "Title": "Admin",
-                "Translations": "Все переводы",
-                "AddTranslation": "Добавить перевод",
-                "WordCategories": "Все категории",
-                "AddWordCategory": "Добавить категорию",
-                "Users": "Все пользователи",
-                "AddUser": "Добавить пользователя"
+                "Translations": "Переводы",
+                "WordCategories": "Категории",
+                "Users": "Пользователи"
             },
             "Learning": {
                 "LearnWords": "Учить слова"
@@ -33,6 +30,9 @@
                     "Begin": "Начало",
                     "End": "Конец",
                     "Previous": "Предыдущая"
+                },
+                "Buttons": {
+                    "New": "Добавить перевод"
                 },
                 "Table": {
                     "Th": {
@@ -154,6 +154,9 @@
                     "End": "Конец",
                     "Previous": "Предыдущая"
                 },
+                "Buttons": {
+                    "New": "Добавить пользователя"
+                },
                 "Table": {
                     "Th": {
                         "Actions": "Действия",
@@ -252,6 +255,9 @@
                     "End": "Конец",
                     "Previous": "Предыдущая"
                 },
+                "Buttons": {
+                    "New": "Добавить категорию"
+                },
                 "Table": {
                     "Th": {
                         "Actions": "Действия",
@@ -267,10 +273,31 @@
                 }
             },
             "View": {
+                "Pagination": {
+                    "Next": "Следующая",
+                    "Begin": "Начало",
+                    "End": "Конец",
+                    "Previous": "Предыдущая"
+                },
                 "Table": {
                     "Titles": {
                         "Name": "Название"
                     }
+                },
+                "TableTranslations": {
+                    "Th": {
+                        "Actions": "Действия",
+                        "Translation": "Слово"
+                    },
+                    "Tr": {
+                        "Actions": {
+                            "View": "Просмотр",
+                            "Delete": "Удаление"
+                        }
+                    }
+                },
+                "Buttons": {
+                    "New": "Добавить слово"
                 }
             },
             "Add": {
@@ -298,6 +325,27 @@
                 },
                 "ValidationErrors": {
                     "Name": {
+                        "AlreadyExists": "Уже существует",
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    }
+                }
+            },
+            "AddTranslation": {
+                "Title": "Добавить слово в категорию",
+                "Inputs": {
+                    "TranslationId": "ID перевода"
+                },
+                "Buttons": {
+                    "Submit": "Отправить"
+                },
+                "ValidationErrors": {
+                    "TranslationId": {
+                        "NotFound": "Слово не найдено",
+                        "AlreadyExists": "Уже существует",
+                        "CanNotBeEmpty": "Не может быть пустым"
+                    },
+                    "WordCategoryId": {
+                        "NotFound": "Категория не найдена",
                         "AlreadyExists": "Уже существует",
                         "CanNotBeEmpty": "Не может быть пустым"
                     }

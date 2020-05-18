@@ -5,12 +5,12 @@
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">{{I18.Title}}</h4>
             <form id="registration-form" method="POST">
-                <input type="hidden" value="{{Request.body.Id}}" name="Id"/>
-                {{> input Field="Name" ValidationError=ValidationErrors.Name Title=I18.Inputs.Name Value=Request.body.Name}}
-                {{> input Field="Email" ValidationError=ValidationErrors.Email Title=I18.Inputs.Email Value=Request.body.Email}}
-                {{> input Field="Phone" ValidationError=ValidationErrors.Phone Title=I18.Inputs.Phone Value=Request.body.Phone}}
-                {{> input Field="Password" ValidationError=ValidationErrors.Password Title=I18.Inputs.Password Value=Request.body.Password}}
-                {{> input Field="RepeatPassword" ValidationError=ValidationErrors.RepeatPassword Title=I18.Inputs.RepeatPassword Value=Request.body.RepeatPassword}}
+                <input type="hidden" value="{{Form.Id}}" name="Id"/>
+                {{> input Field="Name" ValidationError=ValidationErrors.Name Title=I18.Inputs.Name Value=Form.Name}}
+                {{> input Field="Email" ValidationError=ValidationErrors.Email Title=I18.Inputs.Email Value=Form.Email}}
+                {{> input Field="Phone" ValidationError=ValidationErrors.Phone Title=I18.Inputs.Phone Value=Form.Phone}}
+                {{> input Field="Password" ValidationError=ValidationErrors.Password Title=I18.Inputs.Password Value=Form.Password}}
+                {{> input Field="RepeatPassword" ValidationError=ValidationErrors.RepeatPassword Title=I18.Inputs.RepeatPassword Value=Form.RepeatPassword}}
 
                 {{> submit Title=I18.Buttons.Submit}}
             </form>

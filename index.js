@@ -73,6 +73,8 @@ app.get('/admin/word_categories/:id/edit', word_categories.edit);
 app.post('/admin/word_categories/:id/edit', word_categories.put);
 app.get('/admin/word_category_add', word_categories.add);
 app.post('/admin/word_category_add', word_categories.create);
+app.get('/admin/word_categories_add_translation', word_categories.add_translation);
+app.post('/admin/word_categories_add_translation', word_categories.create_translation);
 
 app.get('/admin/users', adminUsers.index);
 app.get('/admin/user_delete/:id', adminUsers.delete);

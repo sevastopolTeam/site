@@ -4,8 +4,9 @@
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">{{I18.Title}}</h4>
-            <form id="word-category-form" method="POST">
-                {{> input Field="Name" ValidationError=ValidationErrors.Name Title=I18.Inputs.Name Value=Form.Name}}
+            <form id="registration-form" method="POST">
+                <input type="hidden" value="{{Form.WordCategoryId}}" name="WordCategoryId"/>
+                {{> input Field="TranslationId" ValidationError=ValidationErrors.TranslationId Title=I18.Inputs.TranslationId Value=Form.TranslationId}}
                 
                 {{> submit Title=I18.Buttons.Submit}} 
             </form>

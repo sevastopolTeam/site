@@ -23,6 +23,7 @@ function prepareParams(request, prefix, params = {}) {
     return params;
 }
 
+exports.PAGE_SIZE_DEFAULT = 15;
 
 exports.getHeaders = function(request) {
     return { "Authorization": request.cookies["SessionToken"] };
@@ -31,8 +32,7 @@ exports.getHeaders = function(request) {
 exports.prepareParamsWithValidationErrors = function(request, prefix, serverResponse) {
     params = {
         Status: (serverResponse["Status"] == "Ok"),
-        Request: request,
-        ServerResponse: serverResponse,
+        Form: request.body,
         ValidationErrors: {}
     }
 
