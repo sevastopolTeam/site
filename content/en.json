@@ -35,10 +35,8 @@
                 "Table": {
                     "Th": {
                         "Actions": "Actions",
-                        "ValueFrom": "Word",
-                        "ValueTo": "Translation",
-                        "LanguageFrom": "Language from",
-                        "LanguageTo": "Language to",
+                        "Russian": "Word",
+                        "English": "Translation",
                         "DownloadUrl": "Download url",
                         "OriginUrl": "Original url",
                         "PartOfSpeech": "Part of speech",
@@ -56,10 +54,8 @@
             "View": {
                 "Table": {
                     "Titles": {
-                        "ValueFrom": "Word",
-                        "ValueTo": "Translation",
-                        "LanguageFrom": "Language from",
-                        "LanguageTo": "Language to",
+                        "Russian": "Word",
+                        "English": "Translation",
                         "DownloadUrl": "Download url",
                         "OriginUrl": "Original url",
                         "PartOfSpeech": "Part of speech",
@@ -71,10 +67,8 @@
             "Add": {
                 "Title": "Add word",
                 "Inputs": {
-                    "ValueFrom": "Word",
-                    "ValueTo": "Translation",
-                    "LanguageFrom": "Language from",
-                    "LanguageTo": "Language to",
+                    "Russian": "Word",
+                    "English": "Translation",
                     "DownloadUrl": "Download url",
                     "OriginUrl": "Original url",
                     "PartOfSpeech": "Part of speech",
@@ -85,17 +79,11 @@
                     "Submit": "Add"
                 },
                 "ValidationErrors": {
-                    "ValueFrom": {
+                    "Russian": {
                         "AlreadyExists": "Already Exists",
                         "CanNotBeEmpty": "Can't be empty"
                     },
-                    "ValueTo": {
-                        "CanNotBeEmpty": "Can't be empty"
-                    },
-                    "LanguageFrom": {
-                        "CanNotBeEmpty": "Can't be empty"
-                    },
-                    "LanguageTo": {
+                    "English": {
                         "CanNotBeEmpty": "Can't be empty"
                     },
                     "Frequency": {
@@ -107,10 +95,8 @@
             "Edit": {
                 "Title": "Edit",
                 "Inputs": {
-                    "ValueFrom": "Word",
-                    "ValueTo": "Translation",
-                    "LanguageFrom": "Language from",
-                    "LanguageTo": "Language to",
+                    "Russian": "Word",
+                    "English": "Translation",
                     "DownloadUrl": "Download url",
                     "OriginUrl": "Original url",
                     "PartOfSpeech": "Part of speech",
@@ -121,17 +107,11 @@
                     "Submit": "Submit"
                 },
                 "ValidationErrors": {
-                    "ValueFrom": {
+                    "Russian": {
                         "AlreadyExists": "Already Exists",
                         "CanNotBeEmpty": "Can't be empty"
                     },
-                    "ValueTo": {
-                        "CanNotBeEmpty": "Can't be empty"
-                    },
-                    "LanguageFrom": {
-                        "CanNotBeEmpty": "Can't be empty"
-                    },
-                    "LanguageTo": {
+                    "English": {
                         "CanNotBeEmpty": "Can't be empty"
                     },
                     "Frequency": {

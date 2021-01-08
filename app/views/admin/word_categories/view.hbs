@@ -15,7 +15,8 @@
     <thead>
         <tr>
             <th> {{I18.TableTranslations.Th.Actions}} </th>
-            <th> {{I18.TableTranslations.Th.Translation}} </th>
+            <th> {{I18.TableTranslations.Th.Russian}} </th>
+            <th> {{I18.TableTranslations.Th.English}} </th>
         </tr>
     </thead>
     {{#each Translations}}
@@ -28,7 +29,8 @@
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </td>
-            <td> {{this.TranslationId}} </td>
+            <td> {{this.Translation.Russian}} </td>
+            <td> {{this.Translation.English}} </td>
         </tr>
     {{/each}}
 </table>

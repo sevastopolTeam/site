@@ -37,10 +37,8 @@
                 "Table": {
                     "Th": {
                         "Actions": "Действия",
-                        "ValueFrom": "Слово",
-                        "ValueTo": "Перевод",
-                        "LanguageFrom": "Исходный язык",
-                        "LanguageTo": "Язык перевода",
+                        "Russian": "Слово",
+                        "English": "Перевод",
                         "DownloadUrl": "Ссылка для отображения",
                         "OriginUrl": "Исходная ссылка",
                         "PartOfSpeech": "Часть речи",
@@ -59,10 +57,8 @@
             "View": {
                 "Table": {
                     "Titles": {
-                        "ValueFrom": "Слово",
-                        "ValueTo": "Перевод",
-                        "LanguageFrom": "Исходный язык",
-                        "LanguageTo": "Язык перевода",
+                        "Russian": "Слово",
+                        "English": "Перевод",
                         "DownloadUrl": "Ссылка для отображения",
                         "OriginUrl": "Исходная ссылка",
                         "PartOfSpeech": "Часть речи",
@@ -74,10 +70,8 @@
             "Add": {
                 "Title": "Добавление слова",
                 "Inputs": {
-                    "ValueFrom": "Слово",
-                    "ValueTo": "Перевод",
-                    "LanguageFrom": "Исходный язык",
-                    "LanguageTo": "Язык перевода",
+                    "Russian": "Слово",
+                    "English": "Перевод",
                     "DownloadUrl": "Ссылка для отображения",
                     "OriginUrl": "Исходная ссылка",
                     "PartOfSpeech": "Часть речи",
@@ -88,17 +82,11 @@
                     "Submit": "Добавить"
                 },
                 "ValidationErrors": {
-                    "ValueFrom": {
+                    "Russian": {
                         "AlreadyExists": "Уже существует",
                         "CanNotBeEmpty": "Не может быть пустым"
                     },
-                    "ValueTo": {
-                        "CanNotBeEmpty": "Не может быть пустым"
-                    },
-                    "LanguageFrom": {
-                        "CanNotBeEmpty": "Не может быть пустым"
-                    },
-                    "LanguageTo": {
+                    "English": {
                         "CanNotBeEmpty": "Не может быть пустым"
                     },
                     "Frequency": {
@@ -111,10 +99,8 @@
             "Edit": {
                 "Title": "Редактирование слова",
                 "Inputs": {
-                    "ValueFrom": "Слово",
-                    "ValueTo": "Перевод",
-                    "LanguageFrom": "Исходный язык",
-                    "LanguageTo": "Язык перевода",
+                    "Russian": "Слово",
+                    "English": "Перевод",
                     "DownloadUrl": "Ссылка для отображения",
                     "OriginUrl": "Исходная ссылка",
                     "PartOfSpeech": "Часть речи",
@@ -125,17 +111,11 @@
                     "Submit": "Отправить"
                 },
                 "ValidationErrors": {
-                    "ValueFrom": {
+                    "Russian": {
                         "AlreadyExists": "Уже существует",
                         "CanNotBeEmpty": "Не может быть пустым"
                     },
-                    "ValueTo": {
-                        "CanNotBeEmpty": "Не может быть пустым"
-                    },
-                    "LanguageFrom": {
-                        "CanNotBeEmpty": "Не может быть пустым"
-                    },
-                    "LanguageTo": {
+                    "English": {
                         "CanNotBeEmpty": "Не может быть пустым"
                     },
                     "Frequency": {
@@ -287,7 +267,8 @@
                 "TableTranslations": {
                     "Th": {
                         "Actions": "Действия",
-                        "Translation": "Слово"
+                        "Russian": "Слово",
+                        "English": "Перевод"
                     },
                     "Tr": {
                         "Actions": {
@@ -342,7 +323,7 @@
                     "TranslationId": {
                         "NotFound": "Слово не найдено",
                         "AlreadyExists": "Уже существует",
-                        "CanNotBeEmpty": "Не может быть пустым"
+                        "CanNotBeEmpty": "Слово не найдено"
                     },
                     "WordCategoryId": {
                         "NotFound": "Категория не найдена",

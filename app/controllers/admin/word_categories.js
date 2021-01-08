@@ -39,18 +39,6 @@ function prepareServerParamsForCreatePage(request) {
     return result;
 }
 
-function prepareServerParamsForCreateTranslation(request) {
-    result = {
-        "Params": {
-            "TranslationId": request.body.TranslationId,
-            "WordCategoryId": request.body.WordCategoryId
-        },
-        "Headers": helperController.getHeaders(request)
-    }
-
-    return result;
-}
-
 exports.index = function(request, response) {
     var serverResponse = remoteServer.get("/api/english/admin/word_categories", prepareServerParamsForIndexPage(request));
 
@@ -85,8 +73,6 @@ exports.view = function(request, response) {
             "Headers": helperController.getHeaders(request)
         }
     );
-    serverResponse["Body"]["AddTranslationLink"] = "/admin/word_categories_add_translation?word_category_id=" + request.params.id;
-    console.log(serverResponseTranslations["Body"]["Records"]);
     if (serverResponse["Error"] == "AccessDenied") {
         response.render('access_denied');
     } else {
@@ -94,6 +80,7 @@ exports.view = function(request, response) {
             'admin/word_categories/view',
             helperController.prepareParams(request, "Admin.WordCategories.View", {
                 "WordCategory": serverResponse["Body"],
+                "AddTranslationLink": "/admin/word_categories_add_translation?WordCategoryId=" + request.params.id,
                 "Translations": serverResponseTranslations["Body"]["Records"],
                 "Pagination": helperController.getPaginationParams(
                     serverResponse.Body.RecordsCount,
@@ -165,7 +152,12 @@ exports.delete = function(request, response) {
 };
 
 exports.add_translation = function(request, response) {
-    params = { "Form": { "WordCategoryId": request.query.word_category_id } };
+    var serverResponse = remoteServer.get(
+        "/api/english/admin/word_categories/" + request.query.WordCategoryId,
+        { "Headers": helperController.getHeaders(request) }
+    );
+
+    params = { "Form": { "WordCategoryId": request.query.WordCategoryId }, "WordCategoryName": serverResponse["Body"]["Name"] };
     response.render(
         'admin/word_categories/add_translation',
         helperController.prepareParams(request, "Admin.WordCategories.AddTranslation", params)
@@ -173,12 +165,38 @@ exports.add_translation = function(request, response) {
 };
 
 exports.create_translation = function(request, response) {
+    arr = request.body.TranslationId.split(' - ');
+    var serverResponse = remoteServer.get(
+        "/api/english/admin/translation_by_full_matching",
+        {
+            "Params": {
+                "Russian": arr[0],
+                "English": arr[1]
+            },
+            "Headers": helperController.getHeaders(request)
+        }
+    );
+    translationId = ""
+    if (serverResponse["Status"] == "Ok") {
+        translationId = serverResponse["Body"]["Id"];
+    }
+
     var serverResponse = remoteServer.post(
-        "/api/english/admin/translation_to_categories",
-        prepareServerParamsForCreateTranslation(request)
+        "/api/english/admin/translation_to_categories", {
+            "Params": {
+                "TranslationId": translationId,
+                "WordCategoryId": request.body.WordCategoryId
+            },
+            "Headers": helperController.getHeaders(request)
+        }
+    );
+    var wordCategoryResponse = remoteServer.get(
+        "/api/english/admin/word_categories/" + request.query.WordCategoryId,
+        { "Headers": helperController.getHeaders(request) }
     );
     params = helperController.prepareParamsWithValidationErrors(request, "Admin.WordCategories.AddTranslation", serverResponse);
     console.log(params)
+    params["WordCategoryName"] = wordCategoryResponse["Body"]["Name"]
     if (params["Status"]) {
         response.redirect("/admin/word_categories/");
     } else {

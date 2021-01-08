@@ -18,6 +18,7 @@
   "homepage": "https://github.com/sevastopolTeam/site#readme",
   "dependencies": {
     "aws-sdk": "^2.656.0",
+    "bootstrap-autocomplete": "^2.3.5",
     "cookie-parser": "^1.4.5",
     "deasync": "^0.1.19",
     "express": "^4.17.1",

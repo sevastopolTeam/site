@@ -1,7 +1,6 @@
 const path = require('path')
 const express = require('express')
 const exphbs = require('express-handlebars')
-const app = express()
 const http = require("http")
 const bodyParser = require("body-parser");
 
@@ -17,6 +16,8 @@ const main = require('./app/controllers/main');
 const aws = require('./config/aws_s3');
 
 var cookieParser = require('cookie-parser')
+
+const app = express();
 
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
@@ -45,6 +46,7 @@ app.set('views', path.join(__dirname, 'app/views'))
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 app.use(cookieParser());
 
 app.get('/', main.home);
@@ -65,6 +67,7 @@ app.get('/admin/translations/:id/edit', translations.edit);
 app.post('/admin/translations/:id/edit', translations.put);
 app.get('/admin/translation_add', translations.add);
 app.post('/admin/translation_add', translations.create);
+app.get('/admin/translations_by_name', translations.get_by_name);
 
 app.get('/admin/word_categories', word_categories.index);
 app.get('/admin/word_category_delete/:id', word_categories.delete);
@@ -83,6 +86,7 @@ app.get('/admin/users/:id/edit', adminUsers.edit);
 app.post('/admin/users/:id/edit', adminUsers.put);
 app.get('/admin/user_add', adminUsers.add);
 app.post('/admin/user_add', adminUsers.create);
+
 
 console.log("Server started")
 app.listen(env.PORT)

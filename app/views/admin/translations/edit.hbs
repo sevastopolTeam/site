@@ -6,10 +6,8 @@
             <h4 class="card-title mt-3 text-center">{{I18.Title}}</h4>
             <form id="registration-form" method="POST">
                 <input type="hidden" value="{{Form.Id}}" name="Id"/>
-                {{> input Field="ValueFrom" ValidationError=ValidationErrors.ValueFrom Title=I18.Inputs.ValueFrom Value=Form.ValueFrom}}
-                {{> input Field="ValueTo" ValidationError=ValidationErrors.ValueTo Title=I18.Inputs.ValueTo Value=Form.ValueTo}}
-                {{> input Field="LanguageFrom" ValidationError=ValidationErrors.LanguageFrom Title=I18.Inputs.LanguageFrom Value=Form.LanguageFrom}}
-                {{> input Field="LanguageTo" ValidationError=ValidationErrors.LanguageTo Title=I18.Inputs.LanguageTo Value=Form.LanguageTo}}
+                {{> input Field="Russian" ValidationError=ValidationErrors.Russian Title=I18.Inputs.Russian Value=Form.Russian}}
+                {{> input Field="English" ValidationError=ValidationErrors.English Title=I18.Inputs.English Value=Form.English}}
                 {{> input Field="PartOfSpeech" ValidationError=ValidationErrors.PartOfSpeech Title=I18.Inputs.PartOfSpeech Value=Form.PartOfSpeech}}
                 {{> input Field="Frequency" ValidationError=ValidationErrors.Frequency Title=I18.Inputs.Frequency Value=Form.Frequency}}
                 {{> input Field="OriginUrl" ValidationError=ValidationErrors.OriginUrl Title=I18.Inputs.OriginUrl Value=Form.OriginUrl}}

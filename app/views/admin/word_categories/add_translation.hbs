@@ -1,15 +1,40 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.5/dist/latest/bootstrap-autocomplete.min.js"></script>
+ -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $( function() {
+        $("#TranslationId").autocomplete({
+            source: "/admin/translations_by_name",
+            delay: 500,
+            minLenght: 2
+        });
+    });
+</script>
+ 
 
 <div class="container">
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px;">
-            <h4 class="card-title mt-3 text-center">{{I18.Title}}</h4>
+            <h4 class="card-title mt-3 text-center">{{I18.Title}} {{WordCategoryName}}</h4>
             <form id="registration-form" method="POST">
                 <input type="hidden" value="{{Form.WordCategoryId}}" name="WordCategoryId"/>
-                {{> input Field="TranslationId" ValidationError=ValidationErrors.TranslationId Title=I18.Inputs.TranslationId Value=Form.TranslationId}}
-                
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input id="TranslationId" name="TranslationId" class="form-control {{#if ValidationErrors.TranslationId}}is-invalid{{else}}is-valid{{/if}}" placeholder="{{I18.Inputs.TranslationId}}" type="text" value="{{Form.TranslationId}}">
+                    {{#if ValidationErrors.TranslationId}}
+                        <div class="invalid-feedback">{{ValidationErrors.TranslationId}}</div>
+                    {{/if}}
+                </div>
+
                 {{> submit Title=I18.Buttons.Submit}} 
             </form>
         </article>
     </div> <!-- card.// -->
 </div>
+

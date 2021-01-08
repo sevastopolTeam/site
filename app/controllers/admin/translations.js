@@ -18,14 +18,12 @@ function prepareServerParamsForCreatePage(request) {
     body = request.body
     downloadUrl = body.DownloadUrl;
     if (downloadUrl.length == 0 && body.OriginUrl.length > 0) {
-        downloadUrl = aws.uploadByUrl(body.OriginUrl, body.ValueFrom + "_" + body.ValueTo);
+        downloadUrl = aws.uploadByUrl(body.OriginUrl, body.Russian + "_" + body.English);
     }
     result = {
         "Params": {
-            "ValueFrom": body.ValueFrom,
-            "ValueTo": body.ValueTo,
-            "LanguageFrom": body.LanguageFrom,
-            "LanguageTo": body.LanguageTo,
+            "Russian": body.Russian,
+            "English": body.English,
             "OriginUrl": body.OriginUrl,
             "DownloadUrl": downloadUrl,
             "PartOfSpeech": body.PartOfSpeech,
@@ -135,3 +133,13 @@ exports.put = function(request, response) {
         response.render('admin/translations/edit', params);
     }
 };
+
+exports.get_by_name = function(request, response) {
+    name = request.query.term;
+    params = remoteServer.get("/api/english/admin/translations_for_autocomplete", { "Params": { "Name": name }, "Headers": helperController.getHeaders(request) });
+    records = params["Body"]["Records"]
+    if (records == null) {
+        records = []
+    }
+    response.json(records.map(function(record) { return record.Russian + " - " + record.English; }));
+}
